@@ -67,6 +67,7 @@
             this.btnDuDoan.TabIndex = 6;
             this.btnDuDoan.Text = "Dự Đoán";
             this.btnDuDoan.UseVisualStyleBackColor = true;
+            this.btnDuDoan.Click += new System.EventHandler(this.btnDuDoan_Click);
             // 
             // lblDatetime
             // 
@@ -113,6 +114,7 @@
             this.btnDoThi.TabIndex = 2;
             this.btnDoThi.Text = "Đồ Thị";
             this.btnDoThi.UseVisualStyleBackColor = true;
+            this.btnDoThi.Click += new System.EventHandler(this.btnDoThi_Click);
             // 
             // dgvOrdersByStatus
             // 
@@ -125,6 +127,7 @@
             this.dgvOrdersByStatus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrdersByStatus.Size = new System.Drawing.Size(764, 209);
             this.dgvOrdersByStatus.TabIndex = 0;
+            this.dgvOrdersByStatus.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOrdersByStatus_CellMouseDown);
             // 
             // btnTrainig
             // 
@@ -134,6 +137,7 @@
             this.btnTrainig.TabIndex = 10;
             this.btnTrainig.Text = "Training";
             this.btnTrainig.UseVisualStyleBackColor = true;
+            this.btnTrainig.Click += new System.EventHandler(this.btnTrainig_Click);
             // 
             // groupBox2
             // 
@@ -156,6 +160,7 @@
             this.radHoaDon.TabIndex = 7;
             this.radHoaDon.Text = "Danh Sách Hóa Đơn";
             this.radHoaDon.UseVisualStyleBackColor = true;
+            this.radHoaDon.CheckedChanged += new System.EventHandler(this.btnLoc_Click);
             // 
             // radTheoTrangThai
             // 
@@ -166,6 +171,7 @@
             this.radTheoTrangThai.TabIndex = 6;
             this.radTheoTrangThai.Text = "Theo Trạng Thái";
             this.radTheoTrangThai.UseVisualStyleBackColor = true;
+            this.radTheoTrangThai.CheckedChanged += new System.EventHandler(this.btnLoc_Click);
             // 
             // radTongHoaDon
             // 
@@ -178,6 +184,7 @@
             this.radTongHoaDon.TabStop = true;
             this.radTongHoaDon.Text = "Tổng Hóa Đơn";
             this.radTongHoaDon.UseVisualStyleBackColor = true;
+            this.radTongHoaDon.CheckedChanged += new System.EventHandler(this.btnLoc_Click);
             // 
             // label2
             // 
@@ -233,6 +240,7 @@
             this.btnLoc.TabIndex = 4;
             this.btnLoc.Text = "Lọc";
             this.btnLoc.UseVisualStyleBackColor = true;
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
             // 
             // dtpStartDate
             // 
@@ -255,6 +263,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ThongKe";
             this.Size = new System.Drawing.Size(1056, 432);
+            this.Load += new System.EventHandler(this.ThongKe_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdersByStatus)).EndInit();

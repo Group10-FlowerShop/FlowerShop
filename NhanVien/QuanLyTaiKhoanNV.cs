@@ -255,6 +255,11 @@ namespace FlowerShop.NhanVien
             }).ToList();
         }
 
+        private void btnCapNhatMatKhau_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //private void btnCapNhatMatKhau_Click(object sender, EventArgs e)
         //{
         //    if (dgvTaiKhoan.SelectedRows.Count > 0)

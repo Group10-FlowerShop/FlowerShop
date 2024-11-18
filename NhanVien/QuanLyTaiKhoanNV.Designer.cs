@@ -75,6 +75,7 @@
             this.btnCapNhatMatKhau.TabIndex = 24;
             this.btnCapNhatMatKhau.Text = "Cài Đặt";
             this.btnCapNhatMatKhau.UseVisualStyleBackColor = true;
+            this.btnCapNhatMatKhau.Click += new System.EventHandler(this.btnCapNhatMatKhau_Click);
             // 
             // btnXoa
             // 
