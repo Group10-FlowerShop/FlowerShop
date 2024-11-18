@@ -13,31 +13,17 @@ namespace FlowerShop.KhachHang
 {
     public partial class QuanLyKhachHang : UserControl
     {
-        db_flowerDataContext fs = new db_flowerDataContext();
+        private db_flowerDataContext _context;
         public QuanLyKhachHang()
         {
             InitializeComponent();
+            _context = new db_flowerDataContext();
         }
-
-        void load_Khachhang()
-        {
-            var tblcustomer = from kh in fs.customers
-                              select kh;
-            dgrvKhachhang.DataSource = tblcustomer;
-        }
-        void xoa_Dulieu()
-        {
-            txtMakh.Clear();
-            txtHoten.Clear();
-            txtEmail.Clear();
-            txtSdt.Clear();
-            txtDiachi.Clear();
-        }
-
         private void frmQuanLyKhachHang_Load(object sender, EventArgs e)
         {
-            load_Khachhang();
-            AutoResizeDataGridView(dgrvKhachhang);
+            LoadInactiveAccounts();
+            LoadCustomerData();
+            AutoResizeDataGridView(dgvKhachHang);
         }
         public void AutoResizeDataGridView(DataGridView dgv)
         {
@@ -50,209 +36,267 @@ namespace FlowerShop.KhachHang
                 column.MinimumWidth = 50; // Set a minimum width as an example, adjust as needed
             }
         }
-
-        bool kiemEmail(string email)
+        public void LoadInactiveAccounts()
         {
-            string pattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
+            // Giả sử _context là đối tượng DbContext của bạn
+            var accounts = _context.accounts  // Truy vấn từ bảng Accounts
+                                  .Where(a => a.status == "inactive" && a.account_id.StartsWith("ACCKH"))
+                                  .Select(a => new { a.account_id, a.username })
+                                  .ToList();
+
+            // Gán dữ liệu vào ComboBox
+            cboAccId.DataSource = accounts;
+            cboAccId.DisplayMember = "username";  // Hiển thị tên tài khoản
+            cboAccId.ValueMember = "account_id";  // Lưu giá trị account_id
+        }
+        public bool IsValidPhoneNumber(string phoneNumber)
+        {
+            string pattern = @"^(0[3|5|7|8|9])([0-9]{8})$"; // Định dạng số điện thoại Việt Nam
+            return Regex.IsMatch(phoneNumber, pattern);
+        }
+        public bool IsValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
         }
-        private void btnTaoma_Click(object sender, EventArgs e)
+        private string GenerateCustomerCode()
         {
-            using (var context = new db_flowerDataContext())
-            {
-                var maKhCuoi = context.customers.OrderByDescending(t => t.customer_id).FirstOrDefault();
-                string maKhMoi;
+            // Tạo mã nhân viên theo định dạng "EMPxxx"
+            string prefix = "CUS";
+            int newCodeNumber = 1;
 
-                if (maKhCuoi != null)
+            // Tìm mã nhân viên lớn nhất trong cơ sở dữ liệu
+            var maxEmployeeCode = _context.customers
+                                          .Where(e => e.customer_id.StartsWith(prefix))
+                                          .Select(e => e.customer_id)
+                                          .OrderByDescending(e => e) // Sắp xếp giảm dần
+                                          .FirstOrDefault();
+
+            // Nếu tìm thấy mã nhân viên lớn nhất
+            if (maxEmployeeCode != null)
+            {
+                // Lấy phần số sau tiền tố "NV"
+                string lastNumber = maxEmployeeCode.Substring(prefix.Length);
+
+                // Chuyển phần số thành số nguyên và cộng thêm 1
+                if (int.TryParse(lastNumber, out int lastCodeNumber))
                 {
-                    string latestID = maKhCuoi.customer_id;
-                    int ma = int.Parse(latestID.Substring(2));
-
-                    maKhMoi = "KH" + (ma + 1).ToString("D3");
+                    newCodeNumber = lastCodeNumber + 1;
                 }
-                else
-                {
-                    maKhMoi = "KH001";
-                }
-                txtMakh.Text = maKhMoi;
             }
-        }
 
-        private void dgrvKhachhang_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = dgrvKhachhang.CurrentRow.Index;
-            txtMakh.Text = dgrvKhachhang.Rows[index].Cells[0].Value.ToString();
-            txtHoten.Text = dgrvKhachhang.Rows[index].Cells[1].Value.ToString();
-            txtEmail.Text = dgrvKhachhang.Rows[index].Cells[2].Value.ToString();
-            if (dgrvKhachhang.Rows[index].Cells[3].Value.ToString() == null)
-            {
-                txtSdt.Text = "";
-            }
-            txtSdt.Text = dgrvKhachhang.Rows[index].Cells[3].Value.ToString();
-            if (dgrvKhachhang.Rows[index].Cells[4].Value.ToString() == null)
-            {
-                txtDiachi.Text = "";
-            }
-            txtDiachi.Text = dgrvKhachhang.Rows[index].Cells[4].Value.ToString();
-        }
-
-        private void dgrvKhachhang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = dgrvKhachhang.CurrentRow.Index;
-            txtMakh.Text = dgrvKhachhang.Rows[index].Cells[0].Value.ToString();
-            txtHoten.Text = dgrvKhachhang.Rows[index].Cells[1].Value.ToString();
-            txtEmail.Text = dgrvKhachhang.Rows[index].Cells[2].Value.ToString();
-            if (dgrvKhachhang.Rows[index].Cells[3].Value.ToString() == null)
-            {
-                txtSdt.Text = "";
-            }
-            txtSdt.Text = dgrvKhachhang.Rows[index].Cells[3].Value.ToString();
-            if (dgrvKhachhang.Rows[index].Cells[4].Value.ToString() == null)
-            {
-                txtDiachi.Text = "";
-            }
-            txtDiachi.Text = dgrvKhachhang.Rows[index].Cells[4].Value.ToString();
+            // Đảm bảo rằng số nhân viên mới luôn có 3 chữ số
+            return $"{prefix}{newCodeNumber.ToString("D3")}";
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPhone.Text) || cboAccId.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email không hợp lệ.");
+                return;
+            }
+
+            if (!IsValidPhoneNumber(txtPhone.Text))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ.");
+                return;
+            }
+
+            string name = txtName.Text;
             string email = txtEmail.Text;
-            if (txtMakh.Text == string.Empty || txtHoten.Text == string.Empty || txtEmail.Text == string.Empty || txtSdt.Text == string.Empty || txtDiachi.Text == string.Empty)
+            string phone = txtPhone.Text;
+            string address = txtAddress.Text;
+            string accountId = cboAccId.SelectedValue.ToString();  // Lấy accountId từ ComboBox
+            string maNV = GenerateCustomerCode();
+            var newCustomer = new customer
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (!kiemEmail(email))
-            {
-                MessageBox.Show("Email phải có định dạng đúng @gmail.com.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (txtSdt.Text.Length < 10)
-            {
-                MessageBox.Show("Vui lòng nhập đủ 10 số", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                string customerId = txtMakh.Text;
-                var existingCustomer = fs.customers.SingleOrDefault(c => c.customer_id == customerId);
-                if (existingCustomer != null)
-                {
-                    MessageBox.Show($"Mã khách hàng '{customerId}' đã tồn tại. Vui lòng nhấn nút tạo mã để tạo mới.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm khách hàng này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        customer cs = new customer();
-                        cs.customer_id = customerId;
-                        cs.name = txtHoten.Text;
-                        cs.email = txtEmail.Text;
-                        cs.phone = txtSdt.Text;
-                        cs.address = txtDiachi.Text;
+                customer_id = maNV,
+                name = name,
+                email = email,
+                phone = phone,
+                address = address,
+                account_id = accountId
+            };
 
-                        fs.customers.InsertOnSubmit(cs);
-                        fs.SubmitChanges();
+            _context.customers.InsertOnSubmit(newCustomer);
+            _context.SubmitChanges();  // Lưu thay đổi
 
-                        load_Khachhang();
-                        MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        xoa_Dulieu();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Thêm thất bại");
-                }
+            // Cập nhật trạng thái tài khoản thành "Hoạt Động"
+            var account = _context.accounts.FirstOrDefault(a => a.account_id == accountId);
+            if (account != null)
+            {
+                account.status = "active";
+                _context.SubmitChanges();
             }
+
+            MessageBox.Show("Thêm khách hàng thành công và trạng thái tài khoản đã được cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadCustomerData();
+            LoadInactiveAccounts();
         }
-
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void LoadCustomerData()
         {
-            if (txtMakh.Text == string.Empty)
-            {
-                MessageBox.Show("Vui lòng chọn 1 khách hàng để xoá", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá khách hàng này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        string maKh = txtMakh.Text;
-                        customer cs = fs.customers.Where(t => t.customer_id == maKh).FirstOrDefault();
-                        fs.customers.DeleteOnSubmit(cs);
-                        fs.SubmitChanges();
-                        load_Khachhang();
-                        MessageBox.Show("Xoá thành công");
-                        xoa_Dulieu();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Xoá thất bại");
-                }
-            }
-        }
+            // Truy vấn nhân viên và các tài khoản của họ
+            var employees = _context.customers
+                                    .Join(_context.accounts,  // Kết hợp với bảng Accounts
+                                          emp => emp.account_id,  // Khóa ngoại trong bảng Employee
+                                          acc => acc.account_id,  // Khóa chính trong bảng Accounts
+                                          (emp, acc) => new  // Lựa chọn các trường cần thiết
+                                          {
+                                              emp.customer_id,
+                                              emp.name,
+                                              emp.email,
+                                              emp.phone,
+                                              emp.address,
+                                              acc.account_id
+                                          })
+                                    .ToList();
 
+            // Gán kết quả vào DataGridView
+            dgvKhachHang.DataSource = employees;
+        }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (txtMakh.Text == string.Empty)
+            // Kiểm tra xem có dòng nào được chọn không
+            if (dgvKhachHang.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Vui lòng chọn 1 khách hàng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật khách hàng này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                // Lấy thông tin từ dòng được chọn
+                DataGridViewRow row = dgvKhachHang.SelectedRows[0];
+
+                // Lấy EmployeeId và AccountId từ các cột của dòng được chọn
+                string customerId = row.Cells["customer_id"].Value.ToString();
+                string accountId = row.Cells["account_id"].Value.ToString();
+
+                // Lấy thông tin từ các TextBox
+                string name = txtName.Text;
+                string email = txtEmail.Text;
+                string phone = txtPhone.Text;
+                string address = txtAddress.Text;
+
+                // Kiểm tra tính hợp lệ của Email
+                if (!IsValidEmail(email))
                 {
-                    try
-                    {
-                        string maKh = txtMakh.Text;
-                        customer cs = fs.customers.Where(t => t.customer_id == maKh).FirstOrDefault();
-                        cs.name = txtHoten.Text;
-                        cs.email = txtEmail.Text;
-                        cs.phone = txtSdt.Text;
-                        cs.address = txtDiachi.Text;
-                        fs.SubmitChanges();
-                        load_Khachhang();
-                        MessageBox.Show("Cập nhật thành công");
-                        xoa_Dulieu();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("Email không hợp lệ.");
+                    return;
+                }
+
+                // Kiểm tra tính hợp lệ của SĐT
+                if (!IsValidPhoneNumber(phone))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ.");
+                    return;
+                }
+
+                // Cập nhật thông tin nhân viên trong cơ sở dữ liệu bằng LINQ
+                var customerToUpdate = _context.customers
+                                                .FirstOrDefault(emp => emp.customer_id == customerId); // Đổi tên "e" thành "emp"
+
+                if (customerToUpdate != null)
+                {
+                    customerToUpdate.name = name;
+                    customerToUpdate.email = email;
+                    customerToUpdate.phone = phone;
+                    customerToUpdate.address = address;
+                    customerToUpdate.account.updated_at = DateTime.Now;
+                    // Cập nhật vào cơ sở dữ liệu bằng SubmitChanges() trong LINQ to SQL
+                    _context.SubmitChanges();
+
+                    // Hiển thị thông báo thành công
+                    MessageBox.Show("Cập nhật thông tin khách hàng thành công!");
+                    LoadCustomerData(); // Cập nhật lại dữ liệu trong DataGridView
                 }
                 else
                 {
-                    MessageBox.Show("Cập nhật thất bại");
+                    MessageBox.Show("Không tìm thấy khách hàng để sửa.");
                 }
             }
-        }
-
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            xoa_Dulieu();
-        }
-
-        private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            else
             {
-                e.Handled = true;
+                MessageBox.Show("Vui lòng chọn một khách hàng để sửa.");
             }
-            TextBox textBox = sender as TextBox;
-            if (textBox.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+        }
+        private void dgvKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Kiểm tra xem có dòng nào được chọn không
+            if (dgvKhachHang.SelectedRows.Count > 0)
             {
-                e.Handled = true;
+                // Lấy thông tin từ dòng được chọn
+                DataGridViewRow row = dgvKhachHang.SelectedRows[0];
+
+                // Điền thông tin vào các TextBox
+                txtName.Text = row.Cells["Name"].Value.ToString();
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
+                txtPhone.Text = row.Cells["Phone"].Value.ToString();
+                txtAddress.Text = row.Cells["Address"].Value.ToString();
+            }
+            TrimEndWhitespace();
+        }
+
+        private void TrimEndWhitespace()
+        {
+            // Xóa khoảng trắng ở cuối chuỗi trong txtSDT
+            txtPhone.Text = txtPhone.Text.TrimEnd();
+        }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem có dòng nào được chọn không
+            if (dgvKhachHang.SelectedRows.Count > 0)
+            {
+                // Lấy thông tin từ dòng được chọn
+                DataGridViewRow row = dgvKhachHang.SelectedRows[0];
+
+                // Lấy EmployeeId và AccountId từ các cột của dòng được chọn
+                string customerId = row.Cells["customer_id"].Value.ToString();
+                string accountId = row.Cells["account_id"].Value.ToString();
+
+                // Xác nhận người dùng có chắc chắn muốn xóa nhân viên
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này và làm tài khoản của họ không hoạt động?",
+                                                      "Xác nhận xóa", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    // Sử dụng LINQ để tìm tài khoản và cập nhật trạng thái
+                    var account = _context.accounts.FirstOrDefault(a => a.account_id == accountId);
+                    if (account != null)
+                    {
+                        account.status = "inactive"; // Cập nhật trạng thái tài khoản
+
+                        // Lưu thay đổi của tài khoản
+                        _context.SubmitChanges();  // Sử dụng SubmitChanges thay vì SaveChanges
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy tài khoản để cập nhật.");
+                        return;
+                    }
+
+                    // Sử dụng LINQ để tìm và xóa nhân viên
+                    var customerToDelete = _context.customers.FirstOrDefault(emp => emp.customer_id == customerId);
+                    if (customerToDelete != null)
+                    {
+                        _context.customers.DeleteOnSubmit(customerToDelete); // Xóa nhân viên khỏi DataContext
+
+                        // Lưu thay đổi
+                        _context.SubmitChanges();  // Sử dụng SubmitChanges thay vì SaveChanges
+
+                        MessageBox.Show("Khách hàng đã được xóa và tài khoản của họ đã được làm không hoạt động.");
+                        LoadCustomerData(); // Cập nhật lại dữ liệu trong DataGridView
+                        LoadInactiveAccounts();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy Khách hàng để xóa.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một nhân viên để xóa.");
             }
         }
     }

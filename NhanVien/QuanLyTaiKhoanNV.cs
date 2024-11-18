@@ -255,20 +255,20 @@ namespace FlowerShop.NhanVien
             }).ToList();
         }
 
-        //private void btnCapNhatMatKhau_Click(object sender, EventArgs e)
-        //{
-        //    if (dgvTaiKhoan.SelectedRows.Count > 0)
-        //    {
-        //        // Lấy accountId từ cột 'account_id' của dòng được chọn
-        //        var accountId = dgvTaiKhoan.SelectedRows[0].Cells["account_id"].Value.ToString();
-        //        frmDoiMatKhau frm = new frmDoiMatKhau(accountId);
-        //        frm.ShowDialog();
-        //        LoadAccounts();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Chọn 1 nhân viên");
-        //    }
-        //}
+        private void btnCapNhatMatKhau_Click(object sender, EventArgs e)
+        {
+            //if (dgvTaiKhoan.SelectedRows.Count > 0)
+            //{
+            //    // Lấy accountId từ cột 'account_id' của dòng được chọn
+            //    var accountId = dgvTaiKhoan.SelectedRows[0].Cells["account_id"].Value.ToString();
+            //    frmDoiMatKhau frm = new frmDoiMatKhau(accountId);
+            //    frm.ShowDialog();
+            //    LoadAccounts();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Chọn 1 nhân viên");
+            //}
+        }
     }
 }
