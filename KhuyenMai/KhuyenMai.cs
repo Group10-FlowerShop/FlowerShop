@@ -30,7 +30,7 @@ namespace FlowerShop.KhuyenMai
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            lichSuKhuyenMai1.BringToFront();
         }
     }
 }

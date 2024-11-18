@@ -17,7 +17,7 @@ namespace FlowerShop.NhanVien
         {
             InitializeComponent();
             _context = new db_flowerDataContext(); // Khởi tạo DataContext
-            LoadComboBoxStatus();
+            LoadComboBoxLoaiTaiKhoan();
             LoadAccounts();
         }
 
@@ -50,18 +50,44 @@ namespace FlowerShop.NhanVien
             }
         }
 
-        private void LoadComboBoxStatus()
+        private void LoadComboBoxLoaiTaiKhoan()
         {
-            cboTrangThai.Items.Add("Hoạt Động");
-            cboTrangThai.Items.Add("Không Hoạt Động");
-            cboTrangThai.SelectedIndex = 0;
+            cboLoaiTaiKhoan.Items.Add("Tất Cả");
+            cboLoaiTaiKhoan.Items.Add("Khách Hàng");
+            cboLoaiTaiKhoan.Items.Add("Nhân Viên");
+            cboLoaiTaiKhoan.SelectedIndex = 0;
         }
 
         private void LoadAccounts()
         {
-            var accounts = _context.accounts.ToList();
+            // Lấy loại tài khoản được chọn từ ComboBox
+            string selectedType = cboLoaiTaiKhoan.SelectedItem.ToString();
 
-            dgvTaiKhoan.DataSource = accounts.Select(a => new
+            IQueryable<account> accountsQuery;
+
+            if (selectedType == "Tất Cả")
+            {
+                // Lấy tất cả tài khoản
+                accountsQuery = _context.accounts;
+            }
+            else if (selectedType == "Nhân Viên")
+            {
+                // Lọc tài khoản có mã bắt đầu bằng "ACCNV"
+                accountsQuery = _context.accounts.Where(a => a.account_id.StartsWith("ACCNV"));
+            }
+            else if (selectedType == "Khách Hàng")
+            {
+                // Lọc tài khoản có mã bắt đầu bằng "ACCKH"
+                accountsQuery = _context.accounts.Where(a => a.account_id.StartsWith("ACCKH"));
+            }
+            else
+            {
+                // Nếu không có loại tài khoản hợp lệ, chỉ trả về một danh sách trống
+                accountsQuery = _context.accounts.Where(a => false);
+            }
+
+            // Hiển thị dữ liệu vào DataGridView
+            dgvTaiKhoan.DataSource = accountsQuery.Select(a => new
             {
                 a.account_id,
                 a.username,
@@ -74,10 +100,24 @@ namespace FlowerShop.NhanVien
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
+            // Kiểm tra nếu không chọn loại tài khoản
+            if (cboLoaiTaiKhoan.SelectedItem.ToString() == "Tất Cả")
+            {
+                MessageBox.Show("Vui lòng chọn loại tài khoản (Khách Hàng hoặc Nhân Viên)!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Kiểm tra các trường nhập liệu
-            if (string.IsNullOrEmpty(txtUsername.Text) || cboTrangThai.SelectedItem == null)
+            if (string.IsNullOrEmpty(txtUsername.Text) || cboLoaiTaiKhoan.SelectedItem == null)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
+                return;
+            }
+
+            // Kiểm tra nếu tên người dùng có chứa khoảng trắng
+            if (txtUsername.Text.Contains(" "))
+            {
+                MessageBox.Show("Tên người dùng không được chứa khoảng trắng!");
                 return;
             }
 
@@ -120,34 +160,37 @@ namespace FlowerShop.NhanVien
                 MessageBox.Show($"Đã xảy ra lỗi khi thêm tài khoản: {ex.Message}");
             }
         }
-
-
-
         private string GenerateAccountId()
         {
-            // Lấy tất cả các account_id bắt đầu bằng "ACC" và có phần số sau đó
+            // Lấy loại tài khoản được chọn từ ComboBox
+            string selectedType = cboLoaiTaiKhoan.SelectedItem.ToString();
+
+            // Xác định tiền tố cho account_id
+            string prefix = selectedType == "Nhân Viên" ? "ACCNV" : "ACCKH";
+
+            // Lấy tất cả các account_id có tiền tố đã chọn và lấy phần số sau tiền tố
             var accountIds = _context.accounts
-                                      .Where(a => a.account_id.StartsWith("ACC"))
+                                      .Where(a => a.account_id.StartsWith(prefix))
                                       .Select(a => a.account_id)
                                       .ToList();
 
-            // Tìm các số đã tồn tại sau "ACC" và chuyển chúng thành kiểu int
+            // Tìm các số đã tồn tại sau tiền tố và chuyển chúng thành kiểu int
             var numbers = accountIds
                             .Select(id =>
                             {
                                 int number;
-                                // Chỉ lấy phần số sau "ACC" nếu định dạng hợp lệ
-                                return int.TryParse(id.Substring(3), out number) ? number : (int?)null;
+                                // Lấy phần số sau tiền tố (3 chữ cái) và chuyển sang kiểu int
+                                return int.TryParse(id.Substring(prefix.Length), out number) ? number : (int?)null;
                             })
                             .Where(num => num.HasValue) // Loại bỏ các giá trị null
                             .Select(num => num.Value)
                             .ToList();
 
-            // Nếu không có account_id hợp lệ, khởi tạo maxId = 0
+            // Tìm số lớn nhất đã tồn tại và cộng thêm 1
             int maxId = numbers.Any() ? numbers.Max() : 0;
 
-            // Tạo ID mới với số tiếp theo
-            return "ACC" + (maxId + 1).ToString("D3"); // Đảm bảo là 3 chữ số
+            // Tạo ID mới với số tiếp theo, đảm bảo là 3 chữ số (ví dụ: "001", "002")
+            return prefix + (maxId + 1).ToString("D3"); // Đảm bảo ID mới có 3 chữ số
         }
 
 
@@ -173,5 +216,59 @@ namespace FlowerShop.NhanVien
                 }
             }
         }
+
+        private void cboLoaiTaiKhoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Kiểm tra xem người dùng đã chọn "Tất Cả" hay chưa
+            if (cboLoaiTaiKhoan.SelectedItem.ToString() == "Tất Cả")
+            {
+                // Nếu chọn "Tất Cả", bạn có thể thêm logic ở đây để xử lý, ví dụ: hiện thị tất cả tài khoản trong DataGridView
+                LoadAccounts(); // Giả sử bạn muốn tải tất cả tài khoản khi chọn "Tất Cả"
+            }
+            else if (cboLoaiTaiKhoan.SelectedItem.ToString() == "Nhân Viên")
+            {
+                // Nếu chọn "Nhân Viên", có thể lọc tài khoản bắt đầu bằng "ACCNV"
+                LoadAccountsByType("ACCNV");
+            }
+            else if (cboLoaiTaiKhoan.SelectedItem.ToString() == "Khách Hàng")
+            {
+                // Nếu chọn "Khách Hàng", có thể lọc tài khoản bắt đầu bằng "ACCKH"
+                LoadAccountsByType("ACCKH");
+            }
+        }
+        private void LoadAccountsByType(string prefix)
+        {
+            // Lọc tài khoản theo tiền tố (prefix) ví dụ "ACCNV" hoặc "ACCKH"
+            var accounts = _context.accounts
+                                    .Where(a => a.account_id.StartsWith(prefix))
+                                    .ToList();
+
+            // Cập nhật lại DataGridView với danh sách tài khoản đã lọc
+            dgvTaiKhoan.DataSource = accounts.Select(a => new
+            {
+                a.account_id,
+                a.username,
+                a.password,
+                a.created_at,
+                a.updated_at,
+                a.status
+            }).ToList();
+        }
+
+        //private void btnCapNhatMatKhau_Click(object sender, EventArgs e)
+        //{
+        //    if (dgvTaiKhoan.SelectedRows.Count > 0)
+        //    {
+        //        // Lấy accountId từ cột 'account_id' của dòng được chọn
+        //        var accountId = dgvTaiKhoan.SelectedRows[0].Cells["account_id"].Value.ToString();
+        //        frmDoiMatKhau frm = new frmDoiMatKhau(accountId);
+        //        frm.ShowDialog();
+        //        LoadAccounts();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Chọn 1 nhân viên");
+        //    }
+        //}
     }
 }
