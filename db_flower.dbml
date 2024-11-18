@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_flowershop" Class="db_flowerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TRUNG\SQLEXPRESS;Initial Catalog=db_flowershop;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="FlowerShop.Properties.Settings" SettingsPropertyName="db_flowershopConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.accounts" Member="accounts">
+    <Type Name="account">
+      <Column Name="account_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="created_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="updated_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="account_customer" Member="customers" ThisKey="account_id" OtherKey="account_id" Type="customer" />
+      <Association Name="account_employee" Member="employees" ThisKey="account_id" OtherKey="account_id" Type="employee" />
+    </Type>
+  </Table>
+  <Table Name="dbo.suppliers" Member="suppliers">
+    <Type Name="supplier">
+      <Column Name="supplier_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="contact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="supplier_flower_supply" Member="flower_supplies" ThisKey="supplier_id" OtherKey="supplier_id" Type="flower_supply" />
+    </Type>
+  </Table>
+  <Table Name="dbo.categories" Member="categories">
+    <Type Name="category">
+      <Column Name="category_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="category_flower_category" Member="flower_categories" ThisKey="category_id" OtherKey="category_id" Type="flower_category" />
+    </Type>
+  </Table>
+  <Table Name="dbo.colors" Member="colors">
+    <Type Name="color">
+      <Column Name="color_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="color_flower_color" Member="flower_colors" ThisKey="color_id" OtherKey="color_id" Type="flower_color" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customers" Member="customers">
+    <Type Name="customer">
+      <Column Name="customer_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="account_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="customer_order" Member="orders" ThisKey="customer_id" OtherKey="customer_id" Type="order" />
+      <Association Name="customer_promotion_usage" Member="promotion_usages" ThisKey="customer_id" OtherKey="customer_id" Type="promotion_usage" />
+      <Association Name="customer_return" Member="returns" ThisKey="customer_id" OtherKey="customer_id" Type="return" />
+      <Association Name="customer_review" Member="reviews" ThisKey="customer_id" OtherKey="customer_id" Type="review" />
+      <Association Name="account_customer" Member="account" ThisKey="account_id" OtherKey="account_id" Type="account" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.emp_permissions" Member="emp_permissions">
+    <Type Name="emp_permission">
+      <Column Name="perm_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="emp_permission_emp_role" Member="emp_roles" ThisKey="perm_id" OtherKey="perm_id" Type="emp_role" />
+    </Type>
+  </Table>
+  <Table Name="dbo.emp_role" Member="emp_roles">
+    <Type Name="emp_role">
+      <Column Name="employee_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="perm_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="emp_permission_emp_role" Member="emp_permission" ThisKey="perm_id" OtherKey="perm_id" Type="emp_permission" IsForeignKey="true" />
+      <Association Name="employee_emp_role" Member="employee" ThisKey="employee_id" OtherKey="employee_id" Type="employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employee" Member="employees">
+    <Type Name="employee">
+      <Column Name="employee_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="account_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="employee_emp_role" Member="emp_roles" ThisKey="employee_id" OtherKey="employee_id" Type="emp_role" />
+      <Association Name="employee_return" Member="returns" ThisKey="employee_id" OtherKey="processed_by" Type="return" />
+      <Association Name="account_employee" Member="account" ThisKey="account_id" OtherKey="account_id" Type="account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.flower_categories" Member="flower_categories">
+    <Type Name="flower_category">
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="category_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="category_flower_category" Member="category" ThisKey="category_id" OtherKey="category_id" Type="category" IsForeignKey="true" />
+      <Association Name="flower_flower_category" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.flower_colors" Member="flower_colors">
+    <Type Name="flower_color">
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="color_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="color_flower_color" Member="color" ThisKey="color_id" OtherKey="color_id" Type="color" IsForeignKey="true" />
+      <Association Name="flower_flower_color" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.flower_images" Member="flower_images">
+    <Type Name="flower_image">
+      <Column Name="image_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="image_url" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="image_type" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="display_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="flower_flower_image" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.flower_occasions" Member="flower_occasions">
+    <Type Name="flower_occasion">
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="occasion_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="flower_flower_occasion" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+      <Association Name="occasion_flower_occasion" Member="occasion" ThisKey="occasion_id" OtherKey="occasion_id" Type="occasion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.flower_styles" Member="flower_styles">
+    <Type Name="flower_style">
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="style_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="flower_flower_style" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+      <Association Name="style_flower_style" Member="style" ThisKey="style_id" OtherKey="style_id" Type="style" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.flower_supplies" Member="flower_supplies">
+    <Type Name="flower_supply">
+      <Column Name="supplier_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="supply_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Association Name="supplier_flower_supply" Member="supplier" ThisKey="supplier_id" OtherKey="supplier_id" Type="supplier" IsForeignKey="true" />
+      <Association Name="flower_flower_supply" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.flowers" Member="flowers">
+    <Type Name="flower">
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="flower_flower_category" Member="flower_categories" ThisKey="flower_id" OtherKey="flower_id" Type="flower_category" />
+      <Association Name="flower_flower_color" Member="flower_colors" ThisKey="flower_id" OtherKey="flower_id" Type="flower_color" />
+      <Association Name="flower_flower_image" Member="flower_images" ThisKey="flower_id" OtherKey="flower_id" Type="flower_image" />
+      <Association Name="flower_flower_occasion" Member="flower_occasions" ThisKey="flower_id" OtherKey="flower_id" Type="flower_occasion" />
+      <Association Name="flower_flower_style" Member="flower_styles" ThisKey="flower_id" OtherKey="flower_id" Type="flower_style" />
+      <Association Name="flower_flower_supply" Member="flower_supplies" ThisKey="flower_id" OtherKey="flower_id" Type="flower_supply" />
+      <Association Name="flower_inventory" Member="inventory" ThisKey="flower_id" OtherKey="flower_id" Type="inventory" Cardinality="One" />
+      <Association Name="flower_order_detail" Member="order_details" ThisKey="flower_id" OtherKey="flower_id" Type="order_detail" />
+      <Association Name="flower_promotion_flower" Member="promotion_flowers" ThisKey="flower_id" OtherKey="flower_id" Type="promotion_flower" />
+      <Association Name="flower_return_detail" Member="return_details" ThisKey="flower_id" OtherKey="flower_id" Type="return_detail" />
+      <Association Name="flower_review" Member="reviews" ThisKey="flower_id" OtherKey="flower_id" Type="review" />
+    </Type>
+  </Table>
+  <Table Name="dbo.inventory" Member="inventories">
+    <Type Name="inventory">
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="last_updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="flower_inventory" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.occasions" Member="occasions">
+    <Type Name="occasion">
+      <Column Name="occasion_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="occasion_flower_occasion" Member="flower_occasions" ThisKey="occasion_id" OtherKey="occasion_id" Type="flower_occasion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.order_details" Member="order_details">
+    <Type Name="order_detail">
+      <Column Name="order_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Association Name="flower_order_detail" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+      <Association Name="order_order_detail" Member="order" ThisKey="order_id" OtherKey="order_id" Type="order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.orders" Member="orders">
+    <Type Name="order">
+      <Column Name="order_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="customer_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="order_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="total_amount" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="shipping_address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="shipping_phone" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="payment_method" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="order_order_detail" Member="order_details" ThisKey="order_id" OtherKey="order_id" Type="order_detail" />
+      <Association Name="order_payment" Member="payments" ThisKey="order_id" OtherKey="order_id" Type="payment" />
+      <Association Name="order_promotion_usage" Member="promotion_usages" ThisKey="order_id" OtherKey="order_id" Type="promotion_usage" />
+      <Association Name="order_return" Member="returns" ThisKey="order_id" OtherKey="order_id" Type="return" />
+      <Association Name="customer_order" Member="customer" ThisKey="customer_id" OtherKey="customer_id" Type="customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.payments" Member="payments">
+    <Type Name="payment">
+      <Column Name="payment_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="order_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="payment_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payment_method" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="transaction_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="order_payment" Member="order" ThisKey="order_id" OtherKey="order_id" Type="order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.promotion_flowers" Member="promotion_flowers">
+    <Type Name="promotion_flower">
+      <Column Name="promotion_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="discount_type" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="discount_value" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Association Name="flower_promotion_flower" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+      <Association Name="promotion_promotion_flower" Member="promotion" ThisKey="promotion_id" OtherKey="promotion_id" Type="promotion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.promotion_usage" Member="promotion_usages">
+    <Type Name="promotion_usage">
+      <Column Name="usage_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="promotion_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="order_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="customer_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="used_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="discount_amount" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Association Name="customer_promotion_usage" Member="customer" ThisKey="customer_id" OtherKey="customer_id" Type="customer" IsForeignKey="true" />
+      <Association Name="order_promotion_usage" Member="order" ThisKey="order_id" OtherKey="order_id" Type="order" IsForeignKey="true" />
+      <Association Name="promotion_promotion_usage" Member="promotion" ThisKey="promotion_id" OtherKey="promotion_id" Type="promotion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.promotions" Member="promotions">
+    <Type Name="promotion">
+      <Column Name="promotion_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="discount_type" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="discount_value" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="start_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="end_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="min_order_amount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="max_discount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="usage_limit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="used_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="promo_code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="created_at" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="updated_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="promotion_promotion_flower" Member="promotion_flowers" ThisKey="promotion_id" OtherKey="promotion_id" Type="promotion_flower" />
+      <Association Name="promotion_promotion_usage" Member="promotion_usages" ThisKey="promotion_id" OtherKey="promotion_id" Type="promotion_usage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.return_details" Member="return_details">
+    <Type Name="return_detail">
+      <Column Name="return_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="return_amount" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Association Name="flower_return_detail" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+      <Association Name="return_return_detail" Member="return" ThisKey="return_id" OtherKey="return_id" Type="return" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[returns]" Member="returns">
+    <Type Name="return">
+      <Column Name="return_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="order_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="customer_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="return_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="reason" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="processed_by" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="return_return_detail" Member="return_details" ThisKey="return_id" OtherKey="return_id" Type="return_detail" />
+      <Association Name="customer_return" Member="customer" ThisKey="customer_id" OtherKey="customer_id" Type="customer" IsForeignKey="true" />
+      <Association Name="employee_return" Member="employee" ThisKey="processed_by" OtherKey="employee_id" Type="employee" IsForeignKey="true" />
+      <Association Name="order_return" Member="order" ThisKey="order_id" OtherKey="order_id" Type="order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.reviews" Member="reviews">
+    <Type Name="review">
+      <Column Name="review_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="customer_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="flower_id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="rating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="review_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="customer_review" Member="customer" ThisKey="customer_id" OtherKey="customer_id" Type="customer" IsForeignKey="true" />
+      <Association Name="flower_review" Member="flower" ThisKey="flower_id" OtherKey="flower_id" Type="flower" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.styles" Member="styles">
+    <Type Name="style">
+      <Column Name="style_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="style_flower_style" Member="flower_styles" ThisKey="style_id" OtherKey="style_id" Type="flower_style" />
+    </Type>
+  </Table>
+</Database>

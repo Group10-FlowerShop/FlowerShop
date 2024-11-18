@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 41.375" name="db_flower">
+  <DataContextMoniker Name="/db_flowerDataContext" />
+  <nestedChildShapes>
+    <classShape Id="114adb83-5669-4cde-b989-b8df87559551" absoluteBounds="1.75, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/db_flowerDataContext/account" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bdc58099-d04e-4cb6-805b-e57f3df54db3" absoluteBounds="1.7650000000000001, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="371e8494-9c1b-4d91-a4e9-facacb7af3b2" absoluteBounds="3.75, 6.875, 2, 1.5785953776041657">
+      <DataClassMoniker Name="/db_flowerDataContext/supplier" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b8aa91ba-7e17-4e31-9841-4ce4ed0ff082" absoluteBounds="3.765, 7.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5d6d671d-13e3-42a8-8156-665c9e9b045c" absoluteBounds="0.75, 18, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/db_flowerDataContext/category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a23f54dc-f7d7-4239-bba7-94367338ee34" absoluteBounds="0.765, 18.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f3bb22f1-3c59-4b57-9e85-686080befd7a" absoluteBounds="0.75, 12, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/db_flowerDataContext/color" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee6c9c9e-76a9-43b1-b4f2-1ea6736fe38e" absoluteBounds="0.765, 12.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7504ce1e-8855-43f1-8e68-4bd2ed09e5ec" absoluteBounds="1.5, 3.75, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/db_flowerDataContext/customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ea7f1b1-7fee-4af0-baf1-76448b2f7599" absoluteBounds="1.5150000000000001, 4.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="356aecf7-7a73-477c-9692-cbb3beeb4db6" absoluteBounds="1.5, 39.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/db_flowerDataContext/emp_permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf46a62d-3e2f-4ed9-8215-e0530ddd1d8b" absoluteBounds="1.5150000000000001, 40.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7bbb465d-51e4-4744-95cf-ce598207c5c4" absoluteBounds="4.25, 24.875, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/db_flowerDataContext/emp_role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a2369539-3c09-4ce0-9e55-3c98197e1cc0" absoluteBounds="4.265, 25.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="22862592-731e-4cf3-95b3-7febf02799c5" absoluteBounds="1.5, 24.5, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/db_flowerDataContext/employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32a81d86-8a29-41a3-8d8d-2a2e6b1a840b" absoluteBounds="1.5150000000000001, 24.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2c7d9b54-a36c-4544-b4a3-23c3505050be" absoluteBounds="3.5, 15, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/db_flowerDataContext/flower_category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8208052c-211f-4f67-9503-dab158543410" absoluteBounds="3.515, 15.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="546789c5-f0f8-4e49-a5e2-3b577fee33b7" absoluteBounds="3.5, 13, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/db_flowerDataContext/flower_color" />
+      <nestedChildShapes>
+        <elementListCompartment Id="59b0e24c-398b-4f05-a1de-8509d8987fb7" absoluteBounds="3.515, 13.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="55c544b1-73e0-4f22-a093-baeb0ac3e135" absoluteBounds="3.5, 30.625, 2, 1.7708968098958273">
+      <DataClassMoniker Name="/db_flowerDataContext/flower_image" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8d64de5-5190-4052-9001-14af3a432a75" absoluteBounds="3.515, 31.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="01122a49-dc34-42a7-bcd3-77dd95fcb8d9" absoluteBounds="3.5, 17, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/db_flowerDataContext/flower_occasion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cfb2b8d-6e98-4320-a45e-d7a337ff4bd9" absoluteBounds="3.515, 17.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f3024dd9-18b5-443d-8387-522c22d96b95" absoluteBounds="6.5, 15, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/db_flowerDataContext/flower_style" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32ab61f3-177a-4b95-914f-d864c7268cfa" absoluteBounds="6.515, 15.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c1718f2-f5a7-4b6b-b0ec-383bfb1f890c" absoluteBounds="6.5, 8.75, 2, 1.7708968098958326">
+      <DataClassMoniker Name="/db_flowerDataContext/flower_supply" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4a9d9444-f509-46c3-a324-0f6444811965" absoluteBounds="6.515, 9.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" absoluteBounds="0.75, 14.75, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/db_flowerDataContext/flower" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ac618d9-0aeb-4c93-8475-c3df0b5e070f" absoluteBounds="0.765, 15.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8a1d14a8-3fbe-49af-ab17-1190c6a1f04a" absoluteBounds="3.5, 21.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/db_flowerDataContext/inventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4e0b4362-25fb-4ba3-a3f2-5e4a736eceef" absoluteBounds="3.515, 21.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47a76dab-4730-43b9-8eb2-7e160f7c19bd" absoluteBounds="0.75, 21, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/db_flowerDataContext/occasion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ea179f2-8cdc-4f81-8026-2b582ebdeadb" absoluteBounds="0.765, 21.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8e6873dc-0f13-4a43-811b-5b9bc7b5900f" absoluteBounds="6.5, 11.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/db_flowerDataContext/order_detail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b291f3e5-377a-4eeb-a60a-6c661b5c82f7" absoluteBounds="6.515, 12.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4c76e4ac-bab4-4917-8f9f-4e873f1d1ef1" absoluteBounds="1.5, 27.125, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/db_flowerDataContext/order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="954d2c72-5c07-49d3-8c58-01546bcf714b" absoluteBounds="1.5150000000000001, 27.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24a8d45f-fe4b-479c-87b5-94729b41f3aa" absoluteBounds="4.25, 27, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/db_flowerDataContext/payment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e7e31ab-3b56-47db-b41f-7ed36ffac93c" absoluteBounds="4.265, 27.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7051ba11-c164-4073-b74e-df5cac77d1b3" absoluteBounds="6.5, 17.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/db_flowerDataContext/promotion_flower" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27cdc889-8876-4845-82c0-9ecd62667cfd" absoluteBounds="6.515, 18.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4966b2ca-aee4-4988-afac-3819ebb548b8" absoluteBounds="9.5, 21.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/db_flowerDataContext/promotion_usage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="59379509-24c6-4a71-9ced-28f9243219d4" absoluteBounds="9.515, 21.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2538174f-633a-4e9c-855d-0fb4a899c34a" absoluteBounds="3.75, 34.75, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/db_flowerDataContext/promotion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="951c31cc-a31a-41f2-9cc5-17673ccc5ff2" absoluteBounds="3.765, 35.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="717b3e0f-7ac4-41f2-b345-4a0922c83683" absoluteBounds="3.5, 9.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/db_flowerDataContext/return_detail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aeff24fe-73bc-4571-8ef0-55cb07cfe45a" absoluteBounds="3.515, 10.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="308faca1-365c-4a4a-8cfd-dfa6b7b2c63d" absoluteBounds="0.75, 8.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/db_flowerDataContext/return" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ad81569-9dc1-4e9e-99d2-3ba2fd8e9210" absoluteBounds="0.765, 8.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="252a4ead-9c2d-4949-bcb8-9b7a825d54be" absoluteBounds="6.5, 20.625, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/db_flowerDataContext/review" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef867066-ae9b-4f81-b430-1d8904b6f04f" absoluteBounds="6.515, 21.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fa0fb18c-bb7e-4e14-ac7c-eff7cc7ca967" absoluteBounds="3.75, 19, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/db_flowerDataContext/style" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aeea603e-ae20-4a8d-8300-29df8291acc2" absoluteBounds="3.765, 19.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 2.7131982421875); (2.625 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/account/account_customer" />
+      <nodes>
+        <classShapeMoniker Id="114adb83-5669-4cde-b989-b8df87559551" />
+        <classShapeMoniker Id="7504ce1e-8855-43f1-8e68-4bd2ed09e5ec" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 39.75); (2.5 : 29.7228011067708); (3.75 : 29.7228011067708); (3.75 : 25.4719962565104); (3.91666666666667 : 25.4719962565104 : JumpStart); (4.08333333333333 : 25.4719962565104 : JumpEnd); (4.25 : 25.4719962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/emp_permission/emp_permission_emp_role" />
+      <nodes>
+        <classShapeMoniker Id="356aecf7-7a73-477c-9692-cbb3beeb4db6" />
+        <classShapeMoniker Id="7bbb465d-51e4-4744-95cf-ce598207c5c4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 25.1109981282552); (3.91666666666667 : 25.1109981282552 : JumpStart); (4.08333333333333 : 25.1109981282552 : JumpEnd); (4.25 : 25.1109981282552)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/employee/employee_emp_role" />
+      <nodes>
+        <classShapeMoniker Id="22862592-731e-4cf3-95b3-7febf02799c5" />
+        <classShapeMoniker Id="7bbb465d-51e4-4744-95cf-ce598207c5c4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 1.73159912109375); (1.25 : 1.73159912109375); (1.25 : 8.25); (1.72916691666667 : 8.25 : JumpStart); (1.89583358333333 : 8.25 : JumpEnd); (2.82291666666667 : 8.25 : JumpStart); (2.98958333333333 : 8.25 : JumpEnd); (3 : 8.25); (3 : 24.125); (2.5 : 24.125); (2.5 : 24.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/account/account_employee" />
+      <nodes>
+        <classShapeMoniker Id="114adb83-5669-4cde-b989-b8df87559551" />
+        <classShapeMoniker Id="22862592-731e-4cf3-95b3-7febf02799c5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 18); (2.84732443490112 : 17.9026755650989 : JumpStart); (3.12142556509888 : 17.6285744349011 : JumpEnd); (3.125 : 17.625); (3.125 : 15.5969962565104); (3.5 : 15.5969962565104)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/category/category_flower_category" />
+      <nodes>
+        <classShapeMoniker Id="5d6d671d-13e3-42a8-8156-665c9e9b045c" />
+        <classShapeMoniker Id="2c7d9b54-a36c-4544-b4a3-23c3505050be" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 13.1939925130208); (1.75 : 13.5969962565104); (2.16666616666667 : 13.5969962565104 : JumpStart); (2.33333283333333 : 13.5969962565104 : JumpEnd); (2.82291666666667 : 13.5969962565104 : JumpStart); (3.20833333333333 : 13.5969962565104 : JumpEnd); (3.26041666666667 : 13.5969962565104 : JumpStart); (3.42708333333333 : 13.5969962565104 : JumpEnd); (3.5 : 13.5969962565104)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/db_flowerDataContext/color/color_flower_color" />
+      <nodes>
+        <classShapeMoniker Id="f3bb22f1-3c59-4b57-9e85-686080befd7a" />
+        <classShapeMoniker Id="546789c5-f0f8-4e49-a5e2-3b577fee33b7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 7.66429768880208); (7.5 : 7.66429768880208); (7.5 : 8.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/supplier/supplier_flower_supply" />
+      <nodes>
+        <classShapeMoniker Id="371e8494-9c1b-4d91-a4e9-facacb7af3b2" />
+        <classShapeMoniker Id="1c1718f2-f5a7-4b6b-b0ec-383bfb1f890c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 15.2359981282552); (2.82291666666667 : 15.2359981282552 : JumpStart); (3.14583333333333 : 15.2359981282552 : JumpEnd); (3.5 : 15.2359981282552)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_flower_category" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="2c7d9b54-a36c-4544-b4a3-23c3505050be" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 14.7663457397837); (2.84732443490112 : 14.6690213048825 : JumpStart); (3.12142556509888 : 14.3949201746848 : JumpEnd); (3.28125 : 14.2350957397837); (3.28125 : 14.4127425130208); (3.37857443490112 : 14.3154180781197 : JumpStart); (3.49642556509888 : 14.197566947922 : JumpEnd); (3.5 : 14.1939925130208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_flower_color" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="546789c5-f0f8-4e49-a5e2-3b577fee33b7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 16.0589460332031); (2.82291666666667 : 16.0589460332031 : JumpStart); (3.20833333333333 : 16.0589460332031 : JumpEnd); (3.25 : 16.0589460332031); (3.25 : 24.25); (4 : 24.25); (4 : 30.25); (4.5 : 30.25); (4.5 : 30.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_flower_image" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="55c544b1-73e0-4f22-a093-baeb0ac3e135" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 16.4773045038061); (2.84732443490112 : 16.5746289387072 : JumpStart); (3.18392556509888 : 16.911230068905 : JumpEnd); (3.1875 : 16.9148045038061); (3.1875 : 16.6875); (3.19107443490112 : 16.6910744349011 : JumpStart); (3.30892556509888 : 16.8089255650989 : JumpEnd); (3.5 : 17)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_flower_occasion" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="01122a49-dc34-42a7-bcd3-77dd95fcb8d9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 14.8004014476663); (2.84732443490112 : 14.7030770127651 : JumpStart); (3.12142556509888 : 14.4289758825674 : JumpEnd); (3.4375 : 14.1129014476663); (3.4375 : 14.625); (6.125 : 14.625); (6.19107443490112 : 14.6910744349011 : JumpStart); (6.30892556509888 : 14.8089255650989 : JumpEnd); (6.5 : 15)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_flower_style" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="f3024dd9-18b5-443d-8387-522c22d96b95" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2499995 : 14.75); (2.2499995 : 13.4439925130208); (2.82291666666667 : 13.4439925130208 : JumpStart); (3.20833333333333 : 13.4439925130208 : JumpEnd); (3.25 : 13.4439925130208); (3.25 : 9.2812505); (6.5 : 9.2812505)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_flower_supply" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="1c1718f2-f5a7-4b6b-b0ec-383bfb1f890c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.70640869391026 : 16.5208968098958); (2.84732443490112 : 16.6618125508867 : JumpStart); (3.18392556509888 : 16.9984136810845 : JumpEnd); (3.19107443490112 : 17.0055625508867 : JumpStart); (3.30892556509888 : 17.1234136810845 : JumpEnd); (3.34375 : 17.1582381159856); (3.34375 : 22.1931469726563); (3.5 : 22.1931469726563)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_inventory" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="8a1d14a8-3fbe-49af-ab17-1190c6a1f04a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 21.0618490375601); (2.84732443490112 : 20.964524602659 : JumpStart); (3.12142556509888 : 20.6904234724612 : JumpEnd); (3.1875 : 20.6243490375601); (3.1875 : 17.6282482565104); (3.26041666666667 : 17.6282482565104 : JumpStart); (3.48958333333333 : 17.6282482565104 : JumpEnd); (3.5 : 17.6282482565104)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/occasion/occasion_flower_occasion" />
+      <nodes>
+        <classShapeMoniker Id="47a76dab-4730-43b9-8eb2-7e160f7c19bd" />
+        <classShapeMoniker Id="01122a49-dc34-42a7-bcd3-77dd95fcb8d9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 14.7622590548377); (2.84732443490112 : 14.6649346199366 : JumpStart); (3.12142556509888 : 14.3908334897389 : JumpEnd); (3.34375 : 14.1685090548377); (3.34375 : 12.4062505); (6.5 : 12.4062505)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_order_detail" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="8e6873dc-0f13-4a43-811b-5b9bc7b5900f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 28.2989005533854); (3.66666666666667 : 28.2989005533854 : JumpStart); (3.83333333333333 : 28.2989005533854 : JumpEnd); (3.91666666666667 : 28.2989005533854 : JumpStart); (4.08333333333333 : 28.2989005533854 : JumpEnd); (4.125 : 28.2989005533854); (4.125 : 26.75); (7.5 : 26.75); (7.5 : 22.8381982421875); (6.25 : 22.8381982421875); (6.25 : 13.8285953776042); (7.5 : 13.8285953776042); (7.5 : 13.4535953776042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/order/order_order_detail" />
+      <nodes>
+        <classShapeMoniker Id="4c76e4ac-bab4-4917-8f9f-4e873f1d1ef1" />
+        <classShapeMoniker Id="8e6873dc-0f13-4a43-811b-5b9bc7b5900f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2500005 : 5.7131982421875); (2.2500005 : 8); (1.89583358333333 : 8 : JumpStart); (1.72916691666667 : 8 : JumpEnd); (1.33333333333333 : 8 : JumpStart); (1.16666666666667 : 8 : JumpEnd); (0.5 : 8); (0.5 : 28.2989005533854); (1.5 : 28.2989005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/customer/customer_order" />
+      <nodes>
+        <classShapeMoniker Id="7504ce1e-8855-43f1-8e68-4bd2ed09e5ec" />
+        <classShapeMoniker Id="4c76e4ac-bab4-4917-8f9f-4e873f1d1ef1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 27.6494502766927); (3.66666666666667 : 27.6494502766927 : JumpStart); (3.83333333333333 : 27.6494502766927 : JumpEnd); (3.91666666666667 : 27.6494502766927 : JumpStart); (4.20833333333333 : 27.6494502766927 : JumpEnd); (4.25 : 27.6494502766927)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/order/order_payment" />
+      <nodes>
+        <classShapeMoniker Id="4c76e4ac-bab4-4917-8f9f-4e873f1d1ef1" />
+        <classShapeMoniker Id="24a8d45f-fe4b-479c-87b5-94729b41f3aa" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 16.4909267869591); (2.84732443490112 : 16.5882512218603 : JumpStart); (3.18392556509888 : 16.924852352058 : JumpEnd); (3.19107443490112 : 16.9320012218603 : JumpStart); (3.30892556509888 : 17.049852352058 : JumpEnd); (3.40625 : 17.1471767869591); (3.40625 : 18.5969962565104); (6.16666666666667 : 18.5969962565104 : JumpStart); (6.45833333333333 : 18.5969962565104 : JumpEnd); (6.5 : 18.5969962565104)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_promotion_flower" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="7051ba11-c164-4073-b74e-df5cac77d1b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.90625 : 5.7131982421875); (2.90625 : 23.01849609375); (2.91666666666667 : 23.01849609375 : JumpStart); (3.14583333333333 : 23.01849609375 : JumpEnd); (3.16666666666667 : 23.01849609375 : JumpStart); (3.33333333333333 : 23.01849609375 : JumpEnd); (7.41666666666667 : 23.01849609375 : JumpStart); (7.58333333333333 : 23.01849609375 : JumpEnd); (7.66666666666667 : 23.01849609375 : JumpStart); (7.83333333333333 : 23.01849609375 : JumpEnd); (9.5 : 23.01849609375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/customer/customer_promotion_usage" />
+      <nodes>
+        <classShapeMoniker Id="7504ce1e-8855-43f1-8e68-4bd2ed09e5ec" />
+        <classShapeMoniker Id="4966b2ca-aee4-4988-afac-3819ebb548b8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 29.345400390625); (3.66666666666667 : 29.345400390625 : JumpStart); (3.83333333333333 : 29.345400390625 : JumpEnd); (3.91666666666667 : 29.345400390625 : JumpStart); (4.08333333333333 : 29.345400390625 : JumpEnd); (7.66666666666667 : 29.345400390625 : JumpStart); (7.83333333333333 : 29.345400390625 : JumpEnd); (9.88541416666667 : 29.345400390625 : JumpStart); (10.0520808333333 : 29.345400390625 : JumpEnd); (10.5 : 29.345400390625); (10.5 : 23.0881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/order/order_promotion_usage" />
+      <nodes>
+        <classShapeMoniker Id="4c76e4ac-bab4-4917-8f9f-4e873f1d1ef1" />
+        <classShapeMoniker Id="4966b2ca-aee4-4988-afac-3819ebb548b8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 36.5969555664063); (7.75 : 36.5969555664063); (7.75 : 22.7131982421875); (6.33333333333333 : 22.7131982421875 : JumpStart); (6.16666666666667 : 22.7131982421875 : JumpEnd); (6 : 22.7131982421875); (6 : 19.8285953776042); (6.16666666666667 : 19.8285953776042 : JumpStart); (6.45833333333333 : 19.8285953776042 : JumpEnd); (7.5 : 19.8285953776042); (7.5 : 19.4535953776042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/promotion/promotion_promotion_flower" />
+      <nodes>
+        <classShapeMoniker Id="2538174f-633a-4e9c-855d-0fb4a899c34a" />
+        <classShapeMoniker Id="7051ba11-c164-4073-b74e-df5cac77d1b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 35.6422252832031); (7.66666666666667 : 35.6422252832031 : JumpStart); (7.83333333333333 : 35.6422252832031 : JumpEnd); (9.9687475 : 35.6422252832031); (9.9687475 : 23.0881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/promotion/promotion_promotion_usage" />
+      <nodes>
+        <classShapeMoniker Id="2538174f-633a-4e9c-855d-0fb4a899c34a" />
+        <classShapeMoniker Id="4966b2ca-aee4-4988-afac-3819ebb548b8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.69687309570312 : 14.75); (2.84732443490112 : 14.599548660802 : JumpStart); (3.12142556509888 : 14.3254475306042 : JumpEnd); (3.125 : 14.3218730957031); (3.125 : 10.6642976888021); (3.16666666666667 : 10.6642976888021 : JumpStart); (3.33333333333333 : 10.6642976888021 : JumpEnd); (3.5 : 10.6642976888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_return_detail" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="717b3e0f-7ac4-41f2-b345-4a0922c83683" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 10.2652498372396); (2.82291666666667 : 10.2652498372396 : JumpStart); (3.14583333333333 : 10.2652498372396 : JumpEnd); (3.16666666666667 : 10.2652498372396 : JumpStart); (3.33333333333333 : 10.2652498372396 : JumpEnd); (3.5 : 10.2652498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/return/return_return_detail" />
+      <nodes>
+        <classShapeMoniker Id="308faca1-365c-4a4a-8cfd-dfa6b7b2c63d" />
+        <classShapeMoniker Id="717b3e0f-7ac4-41f2-b345-4a0922c83683" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.81250025 : 5.7131982421875); (1.81250025 : 8.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/customer/customer_return" />
+      <nodes>
+        <classShapeMoniker Id="7504ce1e-8855-43f1-8e68-4bd2ed09e5ec" />
+        <classShapeMoniker Id="308faca1-365c-4a4a-8cfd-dfa6b7b2c63d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.0625 : 24.5); (3.0625 : 9.74199766861979); (3.02083583333333 : 9.74199766861979 : JumpStart); (2.82291666666667 : 9.74199766861979 : JumpEnd); (2.75 : 9.74199766861979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/employee/employee_return" />
+      <nodes>
+        <classShapeMoniker Id="22862592-731e-4cf3-95b3-7febf02799c5" />
+        <classShapeMoniker Id="308faca1-365c-4a4a-8cfd-dfa6b7b2c63d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 27.125); (1.125 : 26.75); (0.583333333333333 : 26.75 : JumpStart); (0.416666666666667 : 26.75 : JumpEnd); (0.375 : 26.75); (0.375 : 11.0320371360176); (0.441074434901121 : 10.9659627011165 : JumpStart); (0.558925565098879 : 10.8481115709187 : JumpEnd); (0.751537461538462 : 10.6554996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/db_flowerDataContext/order/order_return" />
+      <nodes>
+        <classShapeMoniker Id="4c76e4ac-bab4-4917-8f9f-4e873f1d1ef1" />
+        <classShapeMoniker Id="308faca1-365c-4a4a-8cfd-dfa6b7b2c63d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.9375025 : 5.7131982421875); (2.9375025 : 20.78125); (2.94726570422676 : 20.78125 : JumpStart); (3.14583333333333 : 20.78125 : JumpEnd); (3.16666666666667 : 20.78125 : JumpStart); (3.42708333333333 : 20.78125 : JumpEnd); (5.91666666666667 : 20.78125 : JumpStart); (6.08333333333333 : 20.78125 : JumpEnd); (6.16666666666667 : 20.78125 : JumpStart); (6.33333333333333 : 20.78125 : JumpEnd); (6.5 : 20.78125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/customer/customer_review" />
+      <nodes>
+        <classShapeMoniker Id="7504ce1e-8855-43f1-8e68-4bd2ed09e5ec" />
+        <classShapeMoniker Id="252a4ead-9c2d-4949-bcb8-9b7a825d54be" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 15.7967186448568); (2.82291666666667 : 15.7967186448568 : JumpStart); (3.20833333333333 : 15.7967186448568 : JumpEnd); (3.375 : 15.7967186448568); (3.375 : 16.4439925130208); (6.16666666666667 : 16.4439925130208 : JumpStart); (6.33333333333333 : 16.4439925130208 : JumpEnd); (6.375 : 16.4439925130208); (6.375 : 20.25); (7.5 : 20.25); (7.5 : 20.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/db_flowerDataContext/flower/flower_review" />
+      <nodes>
+        <classShapeMoniker Id="6bbe6b23-f1a4-4968-aa05-0d2b1c38b9e3" />
+        <classShapeMoniker Id="252a4ead-9c2d-4949-bcb8-9b7a825d54be" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 19); (6.125 : 18.625); (6.125 : 16.5689925130208); (6.19107443490112 : 16.5029180781197 : JumpStart); (6.30892556509888 : 16.385066947922 : JumpEnd); (6.5 : 16.1939925130208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/db_flowerDataContext/style/style_flower_style" />
+      <nodes>
+        <classShapeMoniker Id="fa0fb18c-bb7e-4e14-ac7c-eff7cc7ca967" />
+        <classShapeMoniker Id="f3024dd9-18b5-443d-8387-522c22d96b95" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
