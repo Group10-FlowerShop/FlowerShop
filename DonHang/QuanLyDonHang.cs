@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowerShop.SanPham;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,12 @@ namespace FlowerShop.DonHang
     public partial class QuanLyDonHang : UserControl
     {
         db_flowerDataContext fs = new db_flowerDataContext();
+        private ChiTietDonHang donhang1;
         public QuanLyDonHang()
         {
             InitializeComponent();
+            load_cboTrangthai();
+            load_cboThanhtoan();
         }
 
         void load_cboKh()
@@ -26,8 +30,16 @@ namespace FlowerShop.DonHang
             cboMakh.DataSource = tblcustomer.ToList();
             cboMakh.DisplayMember = "name";
             cboMakh.ValueMember = "customer_id";
+            AutoResizeDataGridView(dgrvDonhang);
         }
-
+        public void AutoResizeDataGridView(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.MinimumWidth = 50;
+            }
+        }
         public void load_Tongtien()
         {
             var ordersToUpdate = fs.orders.ToList();
@@ -50,7 +62,9 @@ namespace FlowerShop.DonHang
             var tblorder = from od in fs.orders
                            select od;
             dgrvDonhang.DataSource = tblorder;
-
+            dgrvDonhang.AllowUserToAddRows = false;
+            dgrvDonhang.Columns["customer"].Visible = false;
+            dgrvDonhang.AllowUserToAddRows = false;
         }
 
         void load_cboTrangthai()
@@ -78,14 +92,14 @@ namespace FlowerShop.DonHang
 
         private void frmQuanLyDonHang_Load(object sender, EventArgs e)
         {
-            load_Donhang();
+
             load_cboKh();
+            load_Donhang();
             cboMakh.SelectedValue = -1;
-            load_cboTrangthai();
             cboTrangthai.SelectedValue = -1;
-            load_cboThanhtoan();
             cboLoaithanhtoan.SelectedValue = -1;
             txtTongtien.Text = "0";
+
         }
 
         private void btnTaoma_Click(object sender, EventArgs e)
@@ -123,8 +137,11 @@ namespace FlowerShop.DonHang
                 dtpNgaydat.Value = DateTime.Now;
             }
             txtTongtien.Text = dgrvDonhang.Rows[index].Cells[3].Value.ToString();
-            cboTrangthai.SelectedItem = dgrvDonhang.Rows[index].Cells[4].Value.ToString();
-            cboLoaithanhtoan.SelectedItem = dgrvDonhang.Rows[index].Cells[5].Value.ToString();
+            txtDiachi.Text = dgrvDonhang.Rows[index].Cells[4].Value.ToString();
+            txtSdt.Text = dgrvDonhang.Rows[index].Cells[5].Value.ToString();
+            cboTrangthai.SelectedIndex = cboTrangthai.Items.IndexOf(dgrvDonhang.Rows[index].Cells[6].Value.ToString());
+            cboLoaithanhtoan.SelectedIndex = cboLoaithanhtoan.Items.IndexOf(dgrvDonhang.Rows[index].Cells[7].Value.ToString());
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -153,6 +170,8 @@ namespace FlowerShop.DonHang
                         od.customer_id = cboMakh.SelectedValue.ToString();
                         od.order_date = dtpNgaydat.Value;
                         od.total_amount = decimal.Parse(txtTongtien.Text);
+                        od.shipping_address = txtDiachi.Text;
+                        od.shipping_phone = txtSdt.Text;
                         od.status = cboTrangthai.SelectedItem.ToString();
                         od.payment_method = cboLoaithanhtoan.SelectedItem.ToString();
                         fs.orders.InsertOnSubmit(od);
@@ -175,10 +194,7 @@ namespace FlowerShop.DonHang
 
         private void txtTongtien_TextChanged(object sender, EventArgs e)
         {
-            if (txtTongtien.Text == string.Empty)
-            {
-                txtTongtien.Text = "0";
-            }
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -226,6 +242,8 @@ namespace FlowerShop.DonHang
                     order od = fs.orders.Where(t => t.order_id == maDon).FirstOrDefault();
                     od.customer_id = cboMakh.SelectedValue.ToString();
                     od.order_date = dtpNgaydat.Value;
+                    od.shipping_address = txtDiachi.Text;
+                    od.shipping_phone = txtSdt.Text;
                     od.status = cboTrangthai.SelectedItem.ToString();
                     od.payment_method = cboLoaithanhtoan.SelectedItem.ToString();
                     fs.SubmitChanges();
@@ -233,40 +251,78 @@ namespace FlowerShop.DonHang
                     MessageBox.Show("Cập nhật thành công");
                     xoa_Dulieu();
                 }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại");
+                }
             }
         }
 
-        //private void btnXemchitiet_Click(object sender, EventArgs e)
-        //{
-        //    if (dgrvDonhang.CurrentRow != null)
-        //    {
-        //        string orderId = txtMadonhang.Text;
-        //        frmQuanLyCTDH frmCTDH = new frmQuanLyCTDH(orderId);
-        //        frmCTDH.Owner = this;
-        //        frmCTDH.ShowDialog();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Vui lòng chọn một đơn hàng trước khi xem chi tiết.");
-        //    }
-        //}
-
-        private void frmQuanLyDonHang_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnXemchitiet_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đóng form này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            string madon = txtMadonhang.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(madon))
             {
-                return;
+                bool exists = dgrvDonhang.Rows
+                    .Cast<DataGridViewRow>()
+                    .Any(row => row.Cells["Column1"].Value?.ToString() == madon);
+
+                if (exists)
+                {
+                    // Ẩn tất cả các control hiện tại
+                    foreach (Control control in this.Controls)
+                    {
+                        control.Visible = false;
+                    }
+
+                    // Tạo và hiển thị ChiTietDoiTra
+
+                    donhang1 = new ChiTietDonHang(madon);
+                    donhang1.Dock = DockStyle.Fill;
+                    // Đăng ký sự kiện BackButtonClicked
+                    donhang1.BackButtonClicked += ChiTietControl_BackButtonClicked;
+                    this.Controls.Add(donhang1);
+                    donhang1.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Mã đơn hàng không tồn tại!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
-                e.Cancel = true;
+                MessageBox.Show("Vui lòng chọn một mã đơn hàng!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void ChiTietControl_BackButtonClicked(object sender, EventArgs e)
+        {
+            this.Controls.Remove(donhang1);
+
+            foreach (Control control in this.Controls)
+            {
+                control.Visible = true;
             }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             xoa_Dulieu();
+        }
+
+        private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+            TextBox textBox = sender as TextBox;
+            if (textBox.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

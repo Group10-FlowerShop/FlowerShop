@@ -18,7 +18,14 @@ namespace FlowerShop.NhaCungCap
         {
             InitializeComponent();
         }
-
+        public void AutoResizeDataGridView(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.MinimumWidth = 50;
+            }
+        }
         private void LoadKhoHang()
         {
             var khoHang = from k in db.inventories
@@ -36,6 +43,7 @@ namespace FlowerShop.NhaCungCap
             dgv_khoHang.Columns["name"].HeaderText = "Tên Hoa";
             dgv_khoHang.Columns["quantity"].HeaderText = "Số Lượng";
             dgv_khoHang.Columns["last_updated"].HeaderText = "Ngày Cập Nhật";
+            AutoResizeDataGridView(dgv_khoHang);
         }
 
         private void FormQLKho_Load(object sender, EventArgs e)

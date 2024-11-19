@@ -261,11 +261,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SanPham\DanhSachHinhAnh.cs">
+    <Compile Include="SanPham\DanhMuc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SanPham\DanhSachHinhAnh.Designer.cs">
-      <DependentUpon>DanhSachHinhAnh.cs</DependentUpon>
+    <Compile Include="SanPham\DanhMuc.Designer.cs">
+      <DependentUpon>DanhMuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SanPham\HinhAnh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SanPham\HinhAnh.Designer.cs">
+      <DependentUpon>HinhAnh.cs</DependentUpon>
     </Compile>
     <Compile Include="SanPham\QuanLySanPham.cs">
       <SubType>UserControl</SubType>
@@ -379,8 +385,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SanPham\DanhSachHinhAnh.resx">
-      <DependentUpon>DanhSachHinhAnh.cs</DependentUpon>
+    <EmbeddedResource Include="SanPham\DanhMuc.resx">
+      <DependentUpon>DanhMuc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SanPham\HinhAnh.resx">
+      <DependentUpon>HinhAnh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SanPham\QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>

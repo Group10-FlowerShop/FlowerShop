@@ -62,27 +62,29 @@
             // 
             // btnTroVe
             // 
-            this.btnTroVe.Location = new System.Drawing.Point(244, 176);
+            this.btnTroVe.Location = new System.Drawing.Point(520, 390);
             this.btnTroVe.Margin = new System.Windows.Forms.Padding(2);
             this.btnTroVe.Name = "btnTroVe";
             this.btnTroVe.Size = new System.Drawing.Size(108, 31);
             this.btnTroVe.TabIndex = 7;
             this.btnTroVe.Text = "Trở Về";
             this.btnTroVe.UseVisualStyleBackColor = true;
+            this.btnTroVe.Click += new System.EventHandler(this.btnTroVe_Click);
             // 
             // btnDoiMatKhau
             // 
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(37, 176);
+            this.btnDoiMatKhau.Location = new System.Drawing.Point(338, 390);
             this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.Size = new System.Drawing.Size(108, 31);
             this.btnDoiMatKhau.TabIndex = 6;
             this.btnDoiMatKhau.Text = "Xác Nhận";
             this.btnDoiMatKhau.UseVisualStyleBackColor = true;
+            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
             // 
             // txtReMatKhau
             // 
-            this.txtReMatKhau.Location = new System.Drawing.Point(178, 120);
+            this.txtReMatKhau.Location = new System.Drawing.Point(490, 318);
             this.txtReMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.txtReMatKhau.Name = "txtReMatKhau";
             this.txtReMatKhau.PasswordChar = '\"';
@@ -92,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 123);
+            this.label3.Location = new System.Drawing.Point(276, 321);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 22);
@@ -101,7 +103,7 @@
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.Location = new System.Drawing.Point(178, 80);
+            this.txtMatKhau.Location = new System.Drawing.Point(490, 259);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '\"';
@@ -111,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 82);
+            this.label2.Location = new System.Drawing.Point(276, 262);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 22);
@@ -121,7 +123,7 @@
             // txtUsername
             // 
             this.txtUsername.Enabled = false;
-            this.txtUsername.Location = new System.Drawing.Point(178, 38);
+            this.txtUsername.Location = new System.Drawing.Point(490, 200);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(222, 27);
@@ -130,7 +132,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 41);
+            this.label1.Location = new System.Drawing.Point(276, 203);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 22);
@@ -144,6 +146,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "DoiMatKhau";
             this.Size = new System.Drawing.Size(1076, 662);
+            this.Load += new System.EventHandler(this.frmDoiMatKhau_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

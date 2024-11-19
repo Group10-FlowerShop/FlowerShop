@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowerShop.SanPham;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace FlowerShop.NhanVien
     public partial class QuanLyTaiKhoanNV : UserControl
     {
         private db_flowerDataContext _context;
+        private DoiMatKhau doimatkhau1;
         public QuanLyTaiKhoanNV()
         {
             InitializeComponent();
@@ -257,7 +259,51 @@ namespace FlowerShop.NhanVien
 
         private void btnCapNhatMatKhau_Click(object sender, EventArgs e)
         {
+            string matk = dgvTaiKhoan.SelectedRows[0].Cells["account_id"].Value.ToString();
 
+            if (!string.IsNullOrWhiteSpace(matk))
+            {
+                bool exists = dgvTaiKhoan.Rows
+                    .Cast<DataGridViewRow>()
+                    .Any(row => row.Cells["account_id"].Value?.ToString() == matk);
+
+                if (exists)
+                {
+                    // Ẩn tất cả các control hiện tại
+                    foreach (Control control in this.Controls)
+                    {
+                        control.Visible = false;
+                    }
+
+                    // Tạo và hiển thị ChiTietDoiTra
+
+                    doimatkhau1 = new DoiMatKhau(matk);
+                    doimatkhau1.Dock = DockStyle.Fill;
+                    // Đăng ký sự kiện BackButtonClicked
+                    doimatkhau1.BackButtonClicked += ChiTietControl_BackButtonClicked;
+                    this.Controls.Add(doimatkhau1);
+                    doimatkhau1.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Mã tài khoản không tồn tại!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một tài khoản!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void ChiTietControl_BackButtonClicked(object sender, EventArgs e)
+        {
+            this.Controls.Remove(doimatkhau1);
+
+            foreach (Control control in this.Controls)
+            {
+                control.Visible = true;
+            }
         }
     }
 }

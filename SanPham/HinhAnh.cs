@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace FlowerShop.SanPham
 {
-    public partial class DanhSachHinhAnh : UserControl
+    public partial class HinhAnh : UserControl
     {
         db_flowerDataContext fs = new db_flowerDataContext();
         private string maHoa;
-        private string currentImageFolder = @"D:\PTUD\Code\Hình ảnh";
-        public DanhSachHinhAnh(string maHoa)
+        private string currentImageFolder = @"E:\Net Core\FlowerShop";
+        public HinhAnh(string maHoa)
         {
             InitializeComponent();
             this.maHoa = maHoa;
@@ -214,6 +214,11 @@ namespace FlowerShop.SanPham
                                     MessageBoxIcon.Information);
                 }
             }
+        }
+        public event EventHandler BackButtonClicked;
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            BackButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

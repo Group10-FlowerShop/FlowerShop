@@ -23,11 +23,23 @@ namespace FlowerShop.KhuyenMai
             var tblpromo_used = from pu in fs.promotion_usages
                                 select pu;
             dgrvLichsudung.DataSource = tblpromo_used;
+            dgrvLichsudung.Columns["promotion"].Visible = false;
+            dgrvLichsudung.Columns["order"].Visible = false;
+            dgrvLichsudung.Columns["customer"].Visible = false;
         }
 
         private void frmLichSuDungKhuyenMai_Load(object sender, EventArgs e)
         {
             load_LichSuDungKhuyenMai();
+            AutoResizeDataGridView(dgrvLichsudung);
+        }
+        public void AutoResizeDataGridView(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.MinimumWidth = 50;
+            }
         }
     }
 }

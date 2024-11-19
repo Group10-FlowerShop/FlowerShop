@@ -15,16 +15,32 @@ namespace FlowerShop.NhaCungCap
     public partial class QuanLyNhapHang : UserControl
     {
         db_flowerDataContext fs = new db_flowerDataContext();
-        public QuanLyNhapHang()
+        private string suppId;
+        public QuanLyNhapHang(string suppId)
         {
             InitializeComponent();
+            this.suppId = suppId;
+            loadNhacungcap(suppId);
+            //txtMahoa.Text = maHoa;
+            txtMaNcc.Text = suppId;
         }
-        void loadNcc()
+
+        void loadNhacungcap(string suppId)
         {
-            var tblsupply = from sl in fs.suppliers
-                            select sl;
-            dgrvChitietdondat.DataSource = tblsupply;
-            dgrvChitietdondat.AllowUserToAddRows = false;
+
+            if (!string.IsNullOrEmpty(suppId))
+            {
+                var tblsupply = from fl_sl in fs.flower_supplies
+                                where fl_sl.supplier_id == suppId
+                                select fl_sl;
+                dgrvNhacungcap.DataSource = tblsupply.ToList();
+                dgrvNhacungcap.Columns["flower"].Visible = false;
+                dgrvNhacungcap.Columns["supplier"].Visible = false;
+            }
+            else
+            {
+                dgrvNhacungcap.DataSource = null;
+            }
         }
 
         void load_cboMaNhaHoa()
@@ -37,29 +53,40 @@ namespace FlowerShop.NhaCungCap
         }
 
 
-        void xoa_Dulieudondat()
+
+        private void frmQuanLyNhaCungCap_Load(object sender, EventArgs e)
         {
-            //txtMaNcc.Clear();
+            load_cboMaNhaHoa();
+
+        }
+
+        private void dgrvNhacungcap_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgrvNhacungcap.CurrentRow.Index;
+            txtMaNcc.Text = dgrvNhacungcap.Rows[index].Cells[0].Value.ToString();
+            cboMahoa.SelectedValue = dgrvNhacungcap.Rows[index].Cells[1].Value.ToString();
+            if (DateTime.TryParse(dgrvNhacungcap.Rows[index].Cells[2].Value.ToString(), out DateTime dateValue))
+            {
+                dtpNgaycungcap.Value = dateValue;
+            }
+            else
+            {
+                dtpNgaycungcap.Value = DateTime.Now;
+            }
+            txtSoluong.Text = dgrvNhacungcap.Rows[index].Cells[3].Value.ToString();
+            txtGia.Text = dgrvNhacungcap.Rows[index].Cells[4].Value.ToString();
+        }
+
+        void xoa_Dulieu()
+        {
+            txtMaNcc.Clear();
             dtpNgaycungcap.Value = DateTime.Now;
             txtSoluong.Clear();
             txtGia.Clear();
         }
-
-        void loadDondat()
+        private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMaNcc.Text))
-            {
-                var tblsupply = from fl_sl in fs.flower_supplies
-                                where fl_sl.supplier_id == txtMaNcc.Text
-                                select fl_sl;
-                dgrvChitietdondat.DataSource = tblsupply.ToList();
-                dgrvChitietdondat.Columns["flower"].Visible = false;
-                dgrvChitietdondat.Columns["supplier"].Visible = false;
-            }
-            else
-            {
-                dgrvChitietdondat.DataSource = null;
-            }
+            xoa_Dulieu();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -99,9 +126,9 @@ namespace FlowerShop.NhaCungCap
                         fl_sl.price = decimal.Parse(txtGia.Text);
                         fs.flower_supplies.InsertOnSubmit(fl_sl);
                         fs.SubmitChanges();
-                        loadDondat();
+                        loadNhacungcap(suppId);
                         MessageBox.Show("Thêm thành công");
-                        xoa_Dulieudondat();
+                        xoa_Dulieu();
                     }
                     catch (Exception ex)
                     {
@@ -133,9 +160,9 @@ namespace FlowerShop.NhaCungCap
                         flower_supply fl_sl = fs.flower_supplies.Where(t => t.supplier_id == maNcc).FirstOrDefault();
                         fs.flower_supplies.DeleteOnSubmit(fl_sl);
                         fs.SubmitChanges();
-                        loadDondat();
+                        loadNhacungcap(suppId);
                         MessageBox.Show("Xoá thành công");
-                        xoa_Dulieudondat();
+                        xoa_Dulieu();
                     }
                     catch (Exception ex)
                     {
@@ -183,9 +210,9 @@ namespace FlowerShop.NhaCungCap
                         fs.flower_supplies.InsertOnSubmit(newSupply);
                         fs.SubmitChanges();
 
-                        loadDondat();
+                        loadNhacungcap(supplierId);
                         MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        xoa_Dulieudondat();
+                        xoa_Dulieu();
                     }
                     else
                     {
@@ -203,9 +230,36 @@ namespace FlowerShop.NhaCungCap
             }
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
+        private void txtGia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            TextBox textBox = sender as TextBox;
+            if (e.KeyChar == '.' && textBox.Text.Contains('.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSoluong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMaNcc_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public event EventHandler BackButtonClicked;
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            BackButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

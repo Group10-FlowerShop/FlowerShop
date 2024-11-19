@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowerShop.SanPham;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace FlowerShop.NhaCungCap
     public partial class QuanLyNhaCungCap : UserControl
     {
         db_flowerDataContext fs = new db_flowerDataContext();
+        private QuanLyNhapHang nhaphang1;
         public QuanLyNhaCungCap()
         {
             InitializeComponent();
@@ -34,7 +36,14 @@ namespace FlowerShop.NhaCungCap
             txtNguoidaidien.Text = dgrvNhacungcap.Rows[index].Cells[2].Value.ToString();
             txtDiachi.Text = dgrvNhacungcap.Rows[index].Cells[3].Value.ToString();
         }
-
+        public void AutoResizeDataGridView(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.MinimumWidth = 50;
+            }
+        }
         void xoa_Dulieu()
         {
             txtMaNcc.Clear();
@@ -46,6 +55,7 @@ namespace FlowerShop.NhaCungCap
         private void frmQuanLyNhaCungCap_Load(object sender, EventArgs e)
         {
             loadNcc();
+            AutoResizeDataGridView(dgrvNhacungcap);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -168,17 +178,51 @@ namespace FlowerShop.NhaCungCap
 
         private void btnChitiet_Click(object sender, EventArgs e)
         {
-            //if (dgrvNhacungcap.CurrentRow != null || txtMaNcc.Text != string.Empty)
-            //{
-            //    string suppId = txtMaNcc.Text;
-            //    frmQuanLyDonDat frmQLDD = new frmQuanLyDonDat(suppId);
-            //    frmQLDD.Owner = this;
-            //    frmQLDD.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Vui lòng chọn một nhà cung cấp trước khi xem chi tiết.");
-            //}
+            string mahoa = txtMaNcc.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(mahoa))
+            {
+                bool exists = dgrvNhacungcap.Rows
+                    .Cast<DataGridViewRow>()
+                    .Any(row => row.Cells["supplier_id"].Value?.ToString() == mahoa);
+
+                if (exists)
+                {
+                    // Ẩn tất cả các control hiện tại
+                    foreach (Control control in this.Controls)
+                    {
+                        control.Visible = false;
+                    }
+
+                    // Tạo và hiển thị ChiTietDoiTra
+
+                    nhaphang1 = new QuanLyNhapHang(mahoa);
+                    nhaphang1.Dock = DockStyle.Fill;
+                    // Đăng ký sự kiện BackButtonClicked
+                    nhaphang1.BackButtonClicked += ChiTietControl_BackButtonClicked;
+                    this.Controls.Add(nhaphang1);
+                    nhaphang1.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Mã đổi trả không tồn tại trong danh sách!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mã đổi trả!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void ChiTietControl_BackButtonClicked(object sender, EventArgs e)
+        {
+            this.Controls.Remove(nhaphang1);
+
+            foreach (Control control in this.Controls)
+            {
+                control.Visible = true;
+            }
         }
     }
 }

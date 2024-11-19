@@ -19,7 +19,14 @@ namespace FlowerShop.DoiTra
         {
             InitializeComponent();
         }
-
+        public void AutoResizeDataGridView(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.MinimumWidth = 50;
+            }
+        }
         private void LoadReturns()
         {
             var returnList = from r in db.returns
@@ -49,6 +56,7 @@ namespace FlowerShop.DoiTra
             LoadOrderIds();
             LoadCustomerIds();
             LoadStatus();
+            AutoResizeDataGridView(dgv_doiTra);
         }
 
         private void LoadOrderIds()

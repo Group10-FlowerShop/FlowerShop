@@ -27,7 +27,14 @@ namespace FlowerShop.KhuyenMai
             cboMakhuyenmai.DisplayMember = "name";
             cboMakhuyenmai.ValueMember = "promotion_id";
         }
-
+        public void AutoResizeDataGridView(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.MinimumWidth = 50;
+            }
+        }
         void load_cboMahoa()
         {
             var tblflower = from fl in fs.flowers
@@ -62,6 +69,7 @@ namespace FlowerShop.KhuyenMai
             cboMakhuyenmai.SelectedValue = -1;
             load_cboMahoa();
             cboMahoa.SelectedValue = -1;
+            AutoResizeDataGridView(dgrvHoakhuyenmai);
         }
 
         private void cboMakhuyenmai_SelectedIndexChanged(object sender, EventArgs e)

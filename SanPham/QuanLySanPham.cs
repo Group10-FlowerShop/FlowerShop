@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlowerShop.DoiTra;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace FlowerShop.SanPham
     public partial class QuanLySanPham : UserControl
     {
         db_flowerDataContext fs = new db_flowerDataContext();
+        private DanhMuc danhmuc1;
+        private HinhAnh hinhanh1;
         public QuanLySanPham()
         {
             InitializeComponent();
@@ -25,8 +28,16 @@ namespace FlowerShop.SanPham
             dgrvSanpham.DataSource = tblproduct;
             dgrvSanpham.Columns["inventory"].Visible = false;
             dgrvSanpham.AllowUserToAddRows = false;
+            AutoResizeDataGridView(dgrvSanpham);
         }
-
+        public void AutoResizeDataGridView(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.MinimumWidth = 50;
+            }
+        }
         void xoa_Dulieu()
         {
             txtMahoa.Clear();
@@ -210,20 +221,45 @@ namespace FlowerShop.SanPham
             }
         }
 
-        //private void btnXemanh_Click(object sender, EventArgs e)
-        //{
-        //    if (dgrvSanpham.CurrentRow != null)
-        //    {
-        //        string maHoa = txtMahoa.Text;
-        //        frmQuanLyAnhHoa frmAnhHoa = new frmQuanLyAnhHoa(maHoa);
-        //        frmAnhHoa.Owner = this;
-        //        frmAnhHoa.ShowDialog();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Vui lòng chọn một đơn hàng trước khi xem chi tiết.");
-        //    }
-        //}
+        private void btnXemanh_Click(object sender, EventArgs e)
+        {
+            string mahoa = txtMahoa.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(mahoa))
+            {
+                bool exists = dgrvSanpham.Rows
+                    .Cast<DataGridViewRow>()
+                    .Any(row => row.Cells["flower_id"].Value?.ToString() == mahoa);
+
+                if (exists)
+                {
+                    // Ẩn tất cả các control hiện tại
+                    foreach (Control control in this.Controls)
+                    {
+                        control.Visible = false;
+                    }
+
+                    // Tạo và hiển thị ChiTietDoiTra
+
+                    hinhanh1 = new HinhAnh(mahoa);
+                    hinhanh1.Dock = DockStyle.Fill;
+                    // Đăng ký sự kiện BackButtonClicked
+                    hinhanh1.BackButtonClicked += ChiTietControl_BackButtonClicked;
+                    this.Controls.Add(hinhanh1);
+                    hinhanh1.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Mã đổi trả không tồn tại trong danh sách!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mã đổi trả!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void dgrvSanpham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -256,19 +292,54 @@ namespace FlowerShop.SanPham
             }
         }
 
-        //private void btnXemdanhmuc_Click(object sender, EventArgs e)
-        //{
-        //    if (dgrvSanpham.CurrentRow != null || txtMahoa.Text != string.Empty)
-        //    {
-        //        string flowerId = txtMahoa.Text;
-        //        frmQuanLyDanhMucSanPham frmQLDM = new frmQuanLyDanhMucSanPham(flowerId);
-        //        frmQLDM.Owner = this;
-        //        frmQLDM.ShowDialog();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Vui lòng chọn một loại trước khi xem danh mục.");
-        //    }
-        //}
+        private void btnXemdanhmuc_Click(object sender, EventArgs e)
+        {
+            string mahoa = txtMahoa.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(mahoa))
+            {
+                bool exists = dgrvSanpham.Rows
+                    .Cast<DataGridViewRow>()
+                    .Any(row => row.Cells["flower_id"].Value?.ToString() == mahoa);
+
+                if (exists)
+                {
+                    // Ẩn tất cả các control hiện tại
+                    foreach (Control control in this.Controls)
+                    {
+                        control.Visible = false;
+                    }
+
+                    // Tạo và hiển thị ChiTietDoiTra
+                    
+                    danhmuc1 = new DanhMuc(mahoa);
+                    danhmuc1.Dock = DockStyle.Fill;
+                    // Đăng ký sự kiện BackButtonClicked
+                    danhmuc1.BackButtonClicked += ChiTietControl_BackButtonClicked;
+                    this.Controls.Add(danhmuc1);
+                    danhmuc1.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Mã đổi trả không tồn tại trong danh sách!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mã đổi trả!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void ChiTietControl_BackButtonClicked(object sender, EventArgs e)
+        {
+            this.Controls.Remove(danhmuc1);
+            this.Controls.Remove(hinhanh1);
+
+            foreach (Control control in this.Controls)
+            {
+                control.Visible = true;
+            }
+        }
     }
 }

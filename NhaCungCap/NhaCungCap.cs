@@ -23,11 +23,6 @@ namespace FlowerShop.NhaCungCap
             quanLyNhaCungCap1.BringToFront();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            quanLyNhapHang1.BringToFront();
-        }
-
         private void NhaCungCap_Load(object sender, EventArgs e)
         {
             quanLyNhaCungCap1.BringToFront();
