@@ -223,6 +223,12 @@
     <Compile Include="NhaCungCap\QuanLyNhapHang.Designer.cs">
       <DependentUpon>QuanLyNhapHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\DoiMatKhau.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NhanVien\DoiMatKhau.Designer.cs">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\NhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -255,17 +261,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SanPham\QuanLyDanhMuc.cs">
+    <Compile Include="SanPham\DanhSachHinhAnh.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SanPham\QuanLyDanhMuc.Designer.cs">
-      <DependentUpon>QuanLyDanhMuc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SanPham\QuanLyHinhAnh.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SanPham\QuanLyHinhAnh.Designer.cs">
-      <DependentUpon>QuanLyHinhAnh.cs</DependentUpon>
+    <Compile Include="SanPham\DanhSachHinhAnh.Designer.cs">
+      <DependentUpon>DanhSachHinhAnh.cs</DependentUpon>
     </Compile>
     <Compile Include="SanPham\QuanLySanPham.cs">
       <SubType>UserControl</SubType>
@@ -351,6 +351,9 @@
     <EmbeddedResource Include="NhaCungCap\QuanLyNhapHang.resx">
       <DependentUpon>QuanLyNhapHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\DoiMatKhau.resx">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\NhanVien.resx">
       <DependentUpon>NhanVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,8 +379,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SanPham\QuanLyDanhMuc.resx">
-      <DependentUpon>QuanLyDanhMuc.cs</DependentUpon>
+    <EmbeddedResource Include="SanPham\DanhSachHinhAnh.resx">
+      <DependentUpon>DanhSachHinhAnh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SanPham\QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>
