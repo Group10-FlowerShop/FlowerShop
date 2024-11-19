@@ -14,6 +14,7 @@ namespace FlowerShop.DoiTra
     {
         private db_flowerDataContext db = new db_flowerDataContext();
         private string MaNV = "EMP001";
+        private ChiTietDoiTra chiTietControl;
         public QuanLyDoiTra()
         {
             InitializeComponent();
@@ -270,26 +271,42 @@ namespace FlowerShop.DoiTra
 
         private void btn_chiTiet_Click(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrWhiteSpace(txt_maDoiTra.Text))
-            //{
-            //    bool exists = dgv_doiTra.Rows
-            //        .Cast<DataGridViewRow>()
-            //        .Any(row => row.Cells["return_id"].Value.ToString() == txt_maDoiTra.Text.Trim());
+            string maDoiTra = txt_maDoiTra.Text.Trim();
 
-            //    if (exists)
-            //    {
-            //        FormChiTietDoiTra formChiTiet = new FormChiTietDoiTra(txt_maDoiTra.Text.Trim());
-            //        formChiTiet.ShowDialog();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Mã đổi trả không tồn tại trong danh sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Vui lòng chọn một mã đổi trả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+            if (!string.IsNullOrWhiteSpace(maDoiTra))
+            {
+                bool exists = dgv_doiTra.Rows
+                    .Cast<DataGridViewRow>()
+                    .Any(row => row.Cells["return_id"].Value?.ToString() == maDoiTra);
+
+                if (exists)
+                {
+                    // Ẩn tất cả các control hiện tại
+                    foreach (Control control in this.Controls)
+                    {
+                        control.Visible = false;
+                    }
+
+                    // Tạo và hiển thị ChiTietDoiTra
+
+                    chiTietControl = new ChiTietDoiTra(maDoiTra);
+                    chiTietControl.Dock = DockStyle.Fill;
+                    // Đăng ký sự kiện BackButtonClicked
+                    chiTietControl.BackButtonClicked += ChiTietControl_BackButtonClicked;
+                    this.Controls.Add(chiTietControl);
+                    chiTietControl.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Mã đổi trả không tồn tại trong danh sách!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một mã đổi trả!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void dgv_doiTra_SelectionChanged(object sender, EventArgs e)
@@ -297,6 +314,16 @@ namespace FlowerShop.DoiTra
             if (dgv_doiTra.SelectedRows.Count == 0)
             {
                 btn_chiTiet.Enabled = false;
+            }
+        }
+
+        private void ChiTietControl_BackButtonClicked(object sender, EventArgs e)
+        {
+            this.Controls.Remove(chiTietControl);
+
+            foreach (Control control in this.Controls)
+            {
+                control.Visible = true;
             }
         }
     }

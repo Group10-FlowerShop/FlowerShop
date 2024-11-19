@@ -115,6 +115,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db_flower.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DoiTra\ChiTietDoiTra.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DoiTra\ChiTietDoiTra.Designer.cs">
+      <DependentUpon>ChiTietDoiTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoiTra\DoiTra.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     <Compile Include="TrangChu\TrangChu.Designer.cs">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DoiTra\ChiTietDoiTra.resx">
+      <DependentUpon>ChiTietDoiTra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DoiTra\DoiTra.resx">
       <DependentUpon>DoiTra.cs</DependentUpon>
     </EmbeddedResource>

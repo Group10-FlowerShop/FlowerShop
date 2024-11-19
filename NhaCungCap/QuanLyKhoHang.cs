@@ -45,7 +45,26 @@ namespace FlowerShop.NhaCungCap
 
         private void btn_timKiem_Click(object sender, EventArgs e)
         {
+            string maHoa = txt_maHoa.Text.Trim();
+            int soLuong;
+            bool isQuantityValid = int.TryParse(txt_soLuong.Text.Trim(), out soLuong);
 
+            var timKiem = from k in db.inventories
+                          join h in db.flowers on k.flower_id equals h.flower_id
+                          where (string.IsNullOrEmpty(maHoa) || k.flower_id.Contains(maHoa)) && (!isQuantityValid || k.quantity == soLuong)
+                          select new
+                          {
+                              k.flower_id,
+                              h.name,
+                              k.quantity,
+                              k.last_updated
+                          };
+            dgv_khoHang.DataSource = timKiem.ToList();
+
+            if (!timKiem.Any())
+            {
+                MessageBox.Show("Không tìm thấy kết quả phù hợp!!!");
+            }
         }
 
         private void dgv_khoHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -60,35 +79,43 @@ namespace FlowerShop.NhaCungCap
 
         private void btn_capNhat_Click(object sender, EventArgs e)
         {
-            if (dgv_khoHang.CurrentRow != null)
+            try
             {
-                string maHoa = dgv_khoHang.CurrentRow.Cells["flower_id"].Value.ToString();
-                if (int.TryParse(txt_soLuong.Text, out int soLuongMoi) && soLuongMoi >= 0)
+                if (string.IsNullOrWhiteSpace(txt_maHoa.Text))
                 {
-                    var hoa = db.inventories.SingleOrDefault(i => i.flower_id == maHoa);
+                    MessageBox.Show("Vui lòng chọn sản phẩm cần cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                var updateInventory = db.inventories.SingleOrDefault(i => i.flower_id == txt_maHoa.Text.Trim());
 
-                    if (hoa != null)
+                if (updateInventory != null)
+                {
+
+                    if (int.TryParse(txt_soLuong.Text, out int soLuongMoi) && soLuongMoi >= 0)
                     {
-                        hoa.quantity = soLuongMoi;
-                        hoa.last_updated = DateTime.Now.Date;
+
+                        updateInventory.quantity = soLuongMoi;
+                        updateInventory.last_updated = DateTime.Now.Date;
+
 
                         db.SubmitChanges();
+
+                        MessageBox.Show("Cập nhật kho hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadKhoHang();
-                        MessageBox.Show("Cập nhật số lượng thành công!!!", "Thông báo");
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy sản phẩm!", "Lỗi");
+                        MessageBox.Show("Vui lòng nhập số lượng hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập số lượng hợp lệ!", "Lỗi");
+                    MessageBox.Show("Không tìm thấy sản phẩm để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm cần cập nhật!", "Thông báo");
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
