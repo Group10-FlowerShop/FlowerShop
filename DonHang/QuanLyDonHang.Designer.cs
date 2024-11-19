@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnXemchitiet = new System.Windows.Forms.Button();
             this.cboLoaithanhtoan = new System.Windows.Forms.ComboBox();
             this.cboTrangthai = new System.Windows.Forms.ComboBox();
             this.cboMakh = new System.Windows.Forms.ComboBox();
@@ -60,7 +59,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnXemchitiet);
             this.groupBox1.Controls.Add(this.cboLoaithanhtoan);
             this.groupBox1.Controls.Add(this.cboTrangthai);
             this.groupBox1.Controls.Add(this.cboMakh);
@@ -80,22 +78,12 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dgrvDonhang);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1073, 659);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách đơn hàng";
-            // 
-            // btnXemchitiet
-            // 
-            this.btnXemchitiet.Location = new System.Drawing.Point(753, 480);
-            this.btnXemchitiet.Margin = new System.Windows.Forms.Padding(2);
-            this.btnXemchitiet.Name = "btnXemchitiet";
-            this.btnXemchitiet.Size = new System.Drawing.Size(131, 28);
-            this.btnXemchitiet.TabIndex = 78;
-            this.btnXemchitiet.Text = "Xem chi tiết";
-            this.btnXemchitiet.UseVisualStyleBackColor = true;
             // 
             // cboLoaithanhtoan
             // 
@@ -196,7 +184,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(473, 480);
+            this.btnHuy.Location = new System.Drawing.Point(618, 480);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(131, 28);
@@ -207,7 +195,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(333, 480);
+            this.btnXoa.Location = new System.Drawing.Point(478, 480);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(131, 28);
@@ -218,7 +206,7 @@
             // 
             // btnTaoma
             // 
-            this.btnTaoma.Location = new System.Drawing.Point(613, 480);
+            this.btnTaoma.Location = new System.Drawing.Point(758, 480);
             this.btnTaoma.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoma.Name = "btnTaoma";
             this.btnTaoma.Size = new System.Drawing.Size(131, 28);
@@ -240,7 +228,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(193, 480);
+            this.btnThem.Location = new System.Drawing.Point(338, 480);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(131, 28);
@@ -360,7 +348,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnXemchitiet;
         private System.Windows.Forms.ComboBox cboLoaithanhtoan;
         private System.Windows.Forms.ComboBox cboTrangthai;
         private System.Windows.Forms.ComboBox cboMakh;

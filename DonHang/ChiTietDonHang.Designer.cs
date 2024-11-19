@@ -1,6 +1,6 @@
-﻿namespace FlowerShop.KhachHang
+﻿namespace FlowerShop.DonHang
 {
-    partial class KhachHang
+    partial class ChiTietDonHang
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,28 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.quanLyKhachHang1 = new FlowerShop.KhachHang.QuanLyKhachHang();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
-            // quanLyKhachHang1
+            // groupBox1
             // 
-            this.quanLyKhachHang1.Location = new System.Drawing.Point(0, 0);
-            this.quanLyKhachHang1.Name = "quanLyKhachHang1";
-            this.quanLyKhachHang1.Size = new System.Drawing.Size(1076, 662);
-            this.quanLyKhachHang1.TabIndex = 2;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1073, 659);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh sách đơn hàng";
             // 
-            // KhachHang
+            // ChiTietDonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.quanLyKhachHang1);
-            this.Name = "KhachHang";
-            this.Size = new System.Drawing.Size(1076, 731);
+            this.Controls.Add(this.groupBox1);
+            this.Name = "ChiTietDonHang";
+            this.Size = new System.Drawing.Size(1076, 662);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private QuanLyKhachHang quanLyKhachHang1;
+
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
