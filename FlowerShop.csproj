@@ -127,6 +127,12 @@
     <Compile Include="DoiTra\QuanLyDoiTra.Designer.cs">
       <DependentUpon>QuanLyDoiTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="DonHang\ChiTietDonHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DonHang\ChiTietDonHang.Designer.cs">
+      <DependentUpon>ChiTietDonHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="DonHang\DonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DoiTra\QuanLyDoiTra.resx">
       <DependentUpon>QuanLyDoiTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DonHang\ChiTietDonHang.resx">
+      <DependentUpon>ChiTietDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DonHang\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
