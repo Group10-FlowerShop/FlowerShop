@@ -30,10 +30,6 @@ namespace FlowerShop.TrangChu
             InitializeComponent();
         }
 
-        private void ThongKe_Load(object sender, EventArgs e)
-        {
-            dgvOrdersByStatus.ContextMenuStrip = contextMenuStrip1;
-        }
         public void AutoResizeDataGridView(DataGridView dgv)
         {
             // Set the AutoSizeColumnsMode to Fill to have columns adjust to fill the entire width
@@ -283,6 +279,12 @@ namespace FlowerShop.TrangChu
 
                 MessageBox.Show($"Doanh thu dự đoán cho ngày tiếp theo: {prediction.PredictedRevenue:#,0} VNĐ", "Kết quả dự đoán", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+
+        private void ThongKe_Load(object sender, EventArgs e)
+        {
+            dgvOrdersByStatus.ContextMenuStrip = contextMenuStrip1;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace FlowerShop.NhanVien
         {
             // Giả sử _context là đối tượng DbContext của bạn
             var accounts = _context.accounts  // Truy vấn từ bảng Accounts
-                                  .Where(a => a.status == "inactive")  // Lọc tài khoản không hoạt động
+                                  .Where(a => a.status == "inactive" && a.account_id.StartsWith("ACCNV"))  // Lọc tài khoản không hoạt động và bắt đầu bằng "ACCNV"
                                   .Select(a => new { a.account_id, a.username })
                                   .ToList();
 
@@ -207,7 +207,7 @@ namespace FlowerShop.NhanVien
                     employeeToUpdate.email = email;
                     employeeToUpdate.phone = phone;
                     employeeToUpdate.address = address;
-
+                    employeeToUpdate.account.updated_at = DateTime.Now;
                     // Cập nhật vào cơ sở dữ liệu bằng SubmitChanges() trong LINQ to SQL
                     _context.SubmitChanges();
 

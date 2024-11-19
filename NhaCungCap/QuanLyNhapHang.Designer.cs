@@ -43,9 +43,9 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpNgaycungcap = new System.Windows.Forms.DateTimePicker();
-            this.dgrvNhacungcap = new System.Windows.Forms.DataGridView();
+            this.dgrvChitietdondat = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrvNhacungcap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvChitietdondat)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -64,7 +64,7 @@
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtpNgaycungcap);
-            this.groupBox1.Controls.Add(this.dgrvNhacungcap);
+            this.groupBox1.Controls.Add(this.dgrvChitietdondat);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -152,6 +152,7 @@
             this.btnHuy.TabIndex = 67;
             this.btnHuy.Text = "Huỷ bỏ";
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnXoa
             // 
@@ -162,6 +163,7 @@
             this.btnXoa.TabIndex = 66;
             this.btnXoa.Text = "Xoá";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -172,6 +174,7 @@
             this.btnSua.TabIndex = 65;
             this.btnSua.Text = "Cập nhật";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -182,6 +185,7 @@
             this.btnThem.TabIndex = 64;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // label1
             // 
@@ -202,16 +206,16 @@
             this.dtpNgaycungcap.TabIndex = 62;
             this.dtpNgaycungcap.Value = new System.DateTime(2024, 11, 16, 0, 0, 0, 0);
             // 
-            // dgrvNhacungcap
+            // dgrvChitietdondat
             // 
-            this.dgrvNhacungcap.AllowUserToAddRows = false;
-            this.dgrvNhacungcap.AllowUserToDeleteRows = false;
-            this.dgrvNhacungcap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrvNhacungcap.Location = new System.Drawing.Point(25, 238);
-            this.dgrvNhacungcap.Name = "dgrvNhacungcap";
-            this.dgrvNhacungcap.ReadOnly = true;
-            this.dgrvNhacungcap.Size = new System.Drawing.Size(1022, 150);
-            this.dgrvNhacungcap.TabIndex = 61;
+            this.dgrvChitietdondat.AllowUserToAddRows = false;
+            this.dgrvChitietdondat.AllowUserToDeleteRows = false;
+            this.dgrvChitietdondat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrvChitietdondat.Location = new System.Drawing.Point(25, 238);
+            this.dgrvChitietdondat.Name = "dgrvChitietdondat";
+            this.dgrvChitietdondat.ReadOnly = true;
+            this.dgrvChitietdondat.Size = new System.Drawing.Size(1022, 150);
+            this.dgrvChitietdondat.TabIndex = 61;
             // 
             // QuanLyNhapHang
             // 
@@ -222,7 +226,7 @@
             this.Size = new System.Drawing.Size(1076, 662);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrvNhacungcap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvChitietdondat)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,6 +248,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpNgaycungcap;
-        private System.Windows.Forms.DataGridView dgrvNhacungcap;
+        private System.Windows.Forms.DataGridView dgrvChitietdondat;
     }
 }
