@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FlowerShop.SanPham
+namespace FlowerShop.NhanVien
 {
-    public partial class QuanLyHinhAnh : UserControl
+    public partial class DoiMatKhau : UserControl
     {
-        public QuanLyHinhAnh()
+        public DoiMatKhau()
         {
             InitializeComponent();
         }
