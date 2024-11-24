@@ -13,12 +13,16 @@ namespace FlowerShop.DoiTra
     public partial class QuanLyDoiTra : UserControl
     {
         private db_flowerDataContext db = new db_flowerDataContext();
-        private string MaNV = "EMP001";
+        private string MaNV;
         private ChiTietDoiTra chiTietControl;
         public QuanLyDoiTra()
         {
             InitializeComponent();
         }
+        public void getMaNV(string manv)
+        {
+            this.MaNV = manv;
+        } 
         public void AutoResizeDataGridView(DataGridView dgv)
         {
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

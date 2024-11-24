@@ -12,9 +12,14 @@ namespace FlowerShop.DoiTra
 {
     public partial class DoiTra : UserControl
     {
+        public string manv;
         public DoiTra()
         {
             InitializeComponent();
+        }
+        public void getManv(string manv)
+        {
+            quanLyDoiTra1.getMaNV(manv);
         }
     }
 }

@@ -30,6 +30,7 @@ namespace FlowerShop
             txt_role.Text = roles[0];
             hideB4Check();
             kiemTraQuyen();
+            doiTra1.getManv(id);
         }
         private void hideB4Check()
         {
