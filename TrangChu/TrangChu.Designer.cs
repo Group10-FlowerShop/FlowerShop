@@ -28,29 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.thongKe1 = new FlowerShop.TrangChu.ThongKe();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // thongKe1
+            // panel1
             // 
-            this.thongKe1.Location = new System.Drawing.Point(0, 0);
-            this.thongKe1.Name = "thongKe1";
-            this.thongKe1.Size = new System.Drawing.Size(1056, 432);
-            this.thongKe1.TabIndex = 0;
+            this.panel1.Location = new System.Drawing.Point(3, 418);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1070, 310);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1070, 409);
+            this.panel2.TabIndex = 2;
             // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.thongKe1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "TrangChu";
             this.Size = new System.Drawing.Size(1076, 731);
+            this.Load += new System.EventHandler(this.TrangChu_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ThongKe thongKe1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

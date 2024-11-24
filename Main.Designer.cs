@@ -32,39 +32,39 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.clock = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txt_role = new System.Windows.Forms.Label();
+            this.txt_name = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_trangchu = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_nhanvien = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btn_khachhang = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btn_hoadon = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btn_sanpham = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btn_nhacungcap = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btn_doitra = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.btn_khuyenmai = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.btn_logout = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.sanPham1 = new FlowerShop.SanPham.SanPham();
             this.doiTra1 = new FlowerShop.DoiTra.DoiTra();
             this.nhaCungCap1 = new FlowerShop.NhaCungCap.NhaCungCap();
@@ -74,26 +74,26 @@
             this.trangChu1 = new FlowerShop.TrangChu.TrangChu();
             this.khuyenMai1 = new FlowerShop.KhuyenMai.KhuyenMai();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.btn_trangchu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.btn_nhanvien.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.btn_khachhang.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.btn_hoadon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.btn_sanpham.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.btn_nhacungcap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.btn_doitra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.btn_khuyenmai.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.btn_logout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -101,8 +101,8 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Controls.Add(this.clock);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txt_role);
+            this.panel1.Controls.Add(this.txt_name);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -134,28 +134,39 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2
+            // txt_role
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label2.Location = new System.Drawing.Point(78, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nhân viên";
+            this.txt_role.AutoSize = true;
+            this.txt_role.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_role.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.txt_role.Location = new System.Drawing.Point(78, 40);
+            this.txt_role.Name = "txt_role";
+            this.txt_role.Size = new System.Drawing.Size(74, 19);
+            this.txt_role.TabIndex = 2;
+            this.txt_role.Text = "Nhân viên";
             // 
-            // label1
+            // txt_name
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(77, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 26);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nguyễn Hoàng Trung";
+            this.txt_name.AutoSize = true;
+            this.txt_name.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txt_name.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_name.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txt_name.Location = new System.Drawing.Point(77, 9);
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(192, 26);
+            this.txt_name.TabIndex = 1;
+            this.txt_name.Text = "Nguyễn Hoàng Trung";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBox1.Image = global::FlowerShop.Properties.Resources.Untitled_removebg_preview__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(68, 57);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -210,6 +221,19 @@
             this.label3.MouseEnter += new System.EventHandler(this.btn_trangchu_MouseEnter);
             this.label3.MouseLeave += new System.EventHandler(this.btn_trangchu_MouseLeave);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FlowerShop.Properties.Resources.speedometer;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_trangchu_MouseClick);
+            this.pictureBox2.MouseEnter += new System.EventHandler(this.btn_trangchu_MouseEnter);
+            this.pictureBox2.MouseLeave += new System.EventHandler(this.btn_trangchu_MouseLeave);
+            // 
             // btn_nhanvien
             // 
             this.btn_nhanvien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
@@ -237,6 +261,19 @@
             this.label5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_nhanvien_MouseClick);
             this.label5.MouseEnter += new System.EventHandler(this.btn_nhanvien_MouseEnter);
             this.label5.MouseLeave += new System.EventHandler(this.btn_nhanvien_MouseLeave);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::FlowerShop.Properties.Resources.team;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_nhanvien_MouseClick);
+            this.pictureBox3.MouseEnter += new System.EventHandler(this.btn_nhanvien_MouseEnter);
+            this.pictureBox3.MouseLeave += new System.EventHandler(this.btn_nhanvien_MouseLeave);
             // 
             // btn_khachhang
             // 
@@ -266,6 +303,19 @@
             this.label7.MouseEnter += new System.EventHandler(this.btn_khachhang_MouseEnter);
             this.label7.MouseLeave += new System.EventHandler(this.btn_khachhang_MouseLeave);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::FlowerShop.Properties.Resources.customer_review;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_khachhang_MouseClick);
+            this.pictureBox6.MouseEnter += new System.EventHandler(this.btn_khachhang_MouseEnter);
+            this.pictureBox6.MouseLeave += new System.EventHandler(this.btn_khachhang_MouseLeave);
+            // 
             // btn_hoadon
             // 
             this.btn_hoadon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
@@ -293,6 +343,19 @@
             this.label4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_hoadon_MouseClick);
             this.label4.MouseEnter += new System.EventHandler(this.btn_hoadon_MouseEnter);
             this.label4.MouseLeave += new System.EventHandler(this.btn_hoadon_MouseLeave);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::FlowerShop.Properties.Resources.cargo;
+            this.pictureBox5.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_hoadon_MouseClick);
+            this.pictureBox5.MouseEnter += new System.EventHandler(this.btn_hoadon_MouseEnter);
+            this.pictureBox5.MouseLeave += new System.EventHandler(this.btn_hoadon_MouseLeave);
             // 
             // btn_sanpham
             // 
@@ -322,6 +385,19 @@
             this.label8.MouseEnter += new System.EventHandler(this.btn_sanpham_MouseEnter);
             this.label8.MouseLeave += new System.EventHandler(this.btn_sanpham_MouseLeave);
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::FlowerShop.Properties.Resources.box;
+            this.pictureBox7.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_sanpham_MouseClick);
+            this.pictureBox7.MouseEnter += new System.EventHandler(this.btn_sanpham_MouseEnter);
+            this.pictureBox7.MouseLeave += new System.EventHandler(this.btn_sanpham_MouseLeave);
+            // 
             // btn_nhacungcap
             // 
             this.btn_nhacungcap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
@@ -349,6 +425,19 @@
             this.label9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_nhacungcap_MouseClick);
             this.label9.MouseEnter += new System.EventHandler(this.btn_nhacungcap_MouseEnter);
             this.label9.MouseLeave += new System.EventHandler(this.btn_nhacungcap_MouseLeave);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::FlowerShop.Properties.Resources.market;
+            this.pictureBox8.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 0;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_nhacungcap_MouseClick);
+            this.pictureBox8.MouseEnter += new System.EventHandler(this.btn_nhacungcap_MouseEnter);
+            this.pictureBox8.MouseLeave += new System.EventHandler(this.btn_nhacungcap_MouseLeave);
             // 
             // btn_doitra
             // 
@@ -378,6 +467,19 @@
             this.label10.MouseEnter += new System.EventHandler(this.btn_doitra_MouseEnter);
             this.label10.MouseLeave += new System.EventHandler(this.btn_doitra_MouseLeave);
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::FlowerShop.Properties.Resources._return;
+            this.pictureBox9.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 0;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_doitra_MouseClick);
+            this.pictureBox9.MouseEnter += new System.EventHandler(this.btn_doitra_MouseEnter);
+            this.pictureBox9.MouseLeave += new System.EventHandler(this.btn_doitra_MouseLeave);
+            // 
             // btn_khuyenmai
             // 
             this.btn_khuyenmai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
@@ -405,6 +507,19 @@
             this.label11.Click += new System.EventHandler(this.btn_khuyenmai_Click);
             this.label11.MouseEnter += new System.EventHandler(this.btn_khuyenmai_MouseEnter);
             this.label11.MouseLeave += new System.EventHandler(this.btn_khuyenmai_MouseLeave);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::FlowerShop.Properties.Resources.voucher;
+            this.pictureBox10.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(44, 44);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 0;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Click += new System.EventHandler(this.btn_khuyenmai_Click);
+            this.pictureBox10.MouseEnter += new System.EventHandler(this.btn_khuyenmai_MouseEnter);
+            this.pictureBox10.MouseLeave += new System.EventHandler(this.btn_khuyenmai_MouseLeave);
             // 
             // btn_logout
             // 
@@ -434,12 +549,6 @@
             this.label6.MouseEnter += new System.EventHandler(this.btn_logout_MouseEnter);
             this.label6.MouseLeave += new System.EventHandler(this.btn_logout_MouseLeave);
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::FlowerShop.Properties.Resources.logout;
@@ -453,120 +562,11 @@
             this.pictureBox4.MouseEnter += new System.EventHandler(this.btn_logout_MouseEnter);
             this.pictureBox4.MouseLeave += new System.EventHandler(this.btn_logout_MouseLeave);
             // 
-            // pictureBox1
+            // timer1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Image = global::FlowerShop.Properties.Resources.Untitled_removebg_preview__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(68, 57);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::FlowerShop.Properties.Resources.speedometer;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_trangchu_MouseClick);
-            this.pictureBox2.MouseEnter += new System.EventHandler(this.btn_trangchu_MouseEnter);
-            this.pictureBox2.MouseLeave += new System.EventHandler(this.btn_trangchu_MouseLeave);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::FlowerShop.Properties.Resources.team;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_nhanvien_MouseClick);
-            this.pictureBox3.MouseEnter += new System.EventHandler(this.btn_nhanvien_MouseEnter);
-            this.pictureBox3.MouseLeave += new System.EventHandler(this.btn_nhanvien_MouseLeave);
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::FlowerShop.Properties.Resources.customer_review;
-            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_khachhang_MouseClick);
-            this.pictureBox6.MouseEnter += new System.EventHandler(this.btn_khachhang_MouseEnter);
-            this.pictureBox6.MouseLeave += new System.EventHandler(this.btn_khachhang_MouseLeave);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::FlowerShop.Properties.Resources.cargo;
-            this.pictureBox5.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_hoadon_MouseClick);
-            this.pictureBox5.MouseEnter += new System.EventHandler(this.btn_hoadon_MouseEnter);
-            this.pictureBox5.MouseLeave += new System.EventHandler(this.btn_hoadon_MouseLeave);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = global::FlowerShop.Properties.Resources.box;
-            this.pictureBox7.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 0;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_sanpham_MouseClick);
-            this.pictureBox7.MouseEnter += new System.EventHandler(this.btn_sanpham_MouseEnter);
-            this.pictureBox7.MouseLeave += new System.EventHandler(this.btn_sanpham_MouseLeave);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::FlowerShop.Properties.Resources.market;
-            this.pictureBox8.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 0;
-            this.pictureBox8.TabStop = false;
-            this.pictureBox8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_nhacungcap_MouseClick);
-            this.pictureBox8.MouseEnter += new System.EventHandler(this.btn_nhacungcap_MouseEnter);
-            this.pictureBox8.MouseLeave += new System.EventHandler(this.btn_nhacungcap_MouseLeave);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::FlowerShop.Properties.Resources._return;
-            this.pictureBox9.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 0;
-            this.pictureBox9.TabStop = false;
-            this.pictureBox9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_doitra_MouseClick);
-            this.pictureBox9.MouseEnter += new System.EventHandler(this.btn_doitra_MouseEnter);
-            this.pictureBox9.MouseLeave += new System.EventHandler(this.btn_doitra_MouseLeave);
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::FlowerShop.Properties.Resources.voucher;
-            this.pictureBox10.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(44, 44);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 0;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Click += new System.EventHandler(this.btn_khuyenmai_Click);
-            this.pictureBox10.MouseEnter += new System.EventHandler(this.btn_khuyenmai_MouseEnter);
-            this.pictureBox10.MouseLeave += new System.EventHandler(this.btn_khuyenmai_MouseLeave);
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // sanPham1
             // 
@@ -648,35 +648,35 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.btn_trangchu.ResumeLayout(false);
             this.btn_trangchu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.btn_nhanvien.ResumeLayout(false);
             this.btn_nhanvien.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.btn_khachhang.ResumeLayout(false);
             this.btn_khachhang.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.btn_hoadon.ResumeLayout(false);
             this.btn_hoadon.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.btn_sanpham.ResumeLayout(false);
             this.btn_sanpham.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.btn_nhacungcap.ResumeLayout(false);
             this.btn_nhacungcap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.btn_doitra.ResumeLayout(false);
             this.btn_doitra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.btn_khuyenmai.ResumeLayout(false);
             this.btn_khuyenmai.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.btn_logout.ResumeLayout(false);
             this.btn_logout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -684,8 +684,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label txt_role;
+        private System.Windows.Forms.Label txt_name;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;

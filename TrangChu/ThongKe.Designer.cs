@@ -35,9 +35,9 @@
             this.lblTotalRevenue = new System.Windows.Forms.Label();
             this.lblTotalOrders = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnTrainig = new System.Windows.Forms.Button();
             this.btnDoThi = new System.Windows.Forms.Button();
             this.dgvOrdersByStatus = new System.Windows.Forms.DataGridView();
-            this.btnTrainig = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radHoaDon = new System.Windows.Forms.RadioButton();
             this.radTheoTrangThai = new System.Windows.Forms.RadioButton();
@@ -61,7 +61,7 @@
             // 
             // btnDuDoan
             // 
-            this.btnDuDoan.Location = new System.Drawing.Point(796, 373);
+            this.btnDuDoan.Location = new System.Drawing.Point(6, 370);
             this.btnDuDoan.Name = "btnDuDoan";
             this.btnDuDoan.Size = new System.Drawing.Size(108, 39);
             this.btnDuDoan.TabIndex = 6;
@@ -96,15 +96,27 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lblDatetime);
+            this.groupBox3.Controls.Add(this.btnDuDoan);
+            this.groupBox3.Controls.Add(this.btnTrainig);
             this.groupBox3.Controls.Add(this.lblTotalRevenue);
             this.groupBox3.Controls.Add(this.lblTotalOrders);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(782, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(268, 159);
+            this.groupBox3.Size = new System.Drawing.Size(291, 415);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông Sô";
+            // 
+            // btnTrainig
+            // 
+            this.btnTrainig.Location = new System.Drawing.Point(177, 370);
+            this.btnTrainig.Name = "btnTrainig";
+            this.btnTrainig.Size = new System.Drawing.Size(108, 39);
+            this.btnTrainig.TabIndex = 10;
+            this.btnTrainig.Text = "Training";
+            this.btnTrainig.UseVisualStyleBackColor = true;
+            this.btnTrainig.Click += new System.EventHandler(this.btnTrainig_Click);
             // 
             // btnDoThi
             // 
@@ -128,16 +140,6 @@
             this.dgvOrdersByStatus.Size = new System.Drawing.Size(764, 209);
             this.dgvOrdersByStatus.TabIndex = 0;
             this.dgvOrdersByStatus.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOrdersByStatus_CellMouseDown);
-            // 
-            // btnTrainig
-            // 
-            this.btnTrainig.Location = new System.Drawing.Point(927, 373);
-            this.btnTrainig.Name = "btnTrainig";
-            this.btnTrainig.Size = new System.Drawing.Size(108, 39);
-            this.btnTrainig.TabIndex = 10;
-            this.btnTrainig.Text = "Training";
-            this.btnTrainig.UseVisualStyleBackColor = true;
-            this.btnTrainig.Click += new System.EventHandler(this.btnTrainig_Click);
             // 
             // groupBox2
             // 
@@ -256,13 +258,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnDuDoan);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnTrainig);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ThongKe";
-            this.Size = new System.Drawing.Size(1056, 432);
+            this.Size = new System.Drawing.Size(1076, 422);
             this.Load += new System.EventHandler(this.ThongKe_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

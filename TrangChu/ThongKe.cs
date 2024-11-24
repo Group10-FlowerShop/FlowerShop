@@ -166,9 +166,12 @@ namespace FlowerShop.TrangChu
                 dgvOrdersByStatus.Rows[e.RowIndex].Selected = true;
             }
         }
+        public event Action<int> onShowChart;
         private void btnDoThi_Click(object sender, EventArgs e)
         {
+            int year = dtpStartDate.Value.Year;
 
+            onShowChart?.Invoke(year);
         }
         private void btnTrainig_Click(object sender, EventArgs e)
         {
