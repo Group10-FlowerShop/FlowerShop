@@ -288,7 +288,7 @@ namespace FlowerShop.KhuyenMai
                         else
                             throw new FormatException("Số lượng không hợp lệ!");
 
-                        if (int.TryParse(txtSoluong.Text, out int usedCount))
+                        if (int.TryParse(txtDasudung.Text, out int usedCount))
                             pr.used_count = usedCount;
                         else
                             throw new FormatException("Số lượng đã sử dụng không hợp lệ!");

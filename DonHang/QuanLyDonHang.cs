@@ -20,6 +20,8 @@ namespace FlowerShop.DonHang
             InitializeComponent();
             load_cboTrangthai();
             load_cboThanhtoan();
+            load_Donhang();
+            load_Tongtien();
         }
 
         void load_cboKh()
@@ -46,25 +48,44 @@ namespace FlowerShop.DonHang
 
             foreach (var order in ordersToUpdate)
             {
-                // Tính tổng tiền, chuyển đổi kết quả thành decimal và thay thế null bằng 0
                 decimal totalAmount = fs.order_details
-                                        .Where(od => od.order_id == order.order_id)
-                                        .Sum(od => (decimal?)od.quantity * (decimal?)od.price) ?? 0m; // Sử dụng nullable decimal và toán tử null-coalescing
+                                         .Where(od => od.order_id == order.order_id)
+                                         .Sum(od => (decimal?)od.quantity * (decimal?)od.price) ?? 0m;
 
                 order.total_amount = totalAmount;
             }
-            fs.SubmitChanges();
+
+            fs.SubmitChanges(); // Lưu thay đổi vào cơ sở dữ liệu
+        }
+
+        public void xoa_Dgrv()
+        {
+            dgrvDonhang.DataSource = null;
+
         }
 
         public void load_Donhang()
         {
-            //load_Tongtien();
             var tblorder = from od in fs.orders
-                           select od;
-            dgrvDonhang.DataSource = tblorder;
+                           select new
+                           {
+                               od.order_id,
+                               od.customer_id,
+                               od.order_date,
+                               od.total_amount,// Hiển thị tổng tiền
+                               od.shipping_address,
+                               od.shipping_phone,
+                               od.status,
+                               od.payment_method
+                           };
+
+            // Gán dữ liệu vào DataGridView
+            dgrvDonhang.DataSource = tblorder.ToList();
             dgrvDonhang.AllowUserToAddRows = false;
-            dgrvDonhang.Columns["customer"].Visible = false;
-            dgrvDonhang.AllowUserToAddRows = false;
+
+            // Tùy chỉnh cột nếu cần
+            if (dgrvDonhang.Columns["customer"] != null)
+                dgrvDonhang.Columns["customer"].Visible = false;
         }
 
         void load_cboTrangthai()
@@ -147,10 +168,15 @@ namespace FlowerShop.DonHang
         private void btnThem_Click(object sender, EventArgs e)
         {
 
-            if (txtMadonhang.Text == string.Empty || cboMakh.SelectedValue.ToString() == string.Empty)
+            if (txtMadonhang.Text == string.Empty || cboMakh.SelectedValue.ToString() == string.Empty||cboTrangthai.SelectedItem.ToString()==string.Empty||txtDiachi.Text==string.Empty||txtSdt.Text==string.Empty)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin !!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if(txtTongtien.Text != string.Empty&&txtTongtien.Text!="0")
+            {
+                MessageBox.Show("Đặt lại tổng tiền về 0", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTongtien.Text = "0";
+            }    
             else
             {
                 string maDh = txtMadonhang.Text;
@@ -284,6 +310,7 @@ namespace FlowerShop.DonHang
                     donhang1.BackButtonClicked += ChiTietControl_BackButtonClicked;
                     this.Controls.Add(donhang1);
                     donhang1.BringToFront();
+                    
                 }
                 else
                 {
@@ -305,6 +332,8 @@ namespace FlowerShop.DonHang
             {
                 control.Visible = true;
             }
+            //load_Tongtien();
+            load_Donhang();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)

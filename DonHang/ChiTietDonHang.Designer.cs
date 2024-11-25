@@ -215,6 +215,8 @@
             this.dgrvChitiethoadon.RowTemplate.Height = 24;
             this.dgrvChitiethoadon.Size = new System.Drawing.Size(1063, 296);
             this.dgrvChitiethoadon.TabIndex = 45;
+            this.dgrvChitiethoadon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvChitiethoadon_CellClick);
+            this.dgrvChitiethoadon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvChitiethoadon_CellContentClick);
             // 
             // ChiTietDonHang
             // 

@@ -36,7 +36,6 @@
             this.cboMakhuyenmai = new System.Windows.Forms.ComboBox();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtGiatrigiam = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,7 +54,6 @@
             this.groupBox1.Controls.Add(this.cboMakhuyenmai);
             this.groupBox1.Controls.Add(this.btnHuy);
             this.groupBox1.Controls.Add(this.btnXoa);
-            this.groupBox1.Controls.Add(this.btnSua);
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.txtGiatrigiam);
             this.groupBox1.Controls.Add(this.label4);
@@ -130,7 +128,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(689, 525);
+            this.btnXoa.Location = new System.Drawing.Point(816, 525);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(98, 39);
@@ -139,20 +137,9 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(816, 525);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(98, 39);
-            this.btnSua.TabIndex = 95;
-            this.btnSua.Text = "Cập nhật";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(562, 525);
+            this.btnThem.Location = new System.Drawing.Point(689, 525);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(98, 39);
@@ -225,7 +212,6 @@
         private System.Windows.Forms.ComboBox cboMakhuyenmai;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtGiatrigiam;
         private System.Windows.Forms.Label label4;

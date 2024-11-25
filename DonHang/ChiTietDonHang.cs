@@ -107,7 +107,7 @@ namespace FlowerShop.DonHang
                     order_detail od_dt = fs.order_details.Where(t => t.order_id == maDon).FirstOrDefault();
                     fs.order_details.DeleteOnSubmit(od_dt);
                     fs.SubmitChanges();
-                    load_Cthd();
+                    LoadOrderDetails();
                     MessageBox.Show("Xoá thành công");
                     xoa_Dulieu();
                 }
@@ -124,6 +124,10 @@ namespace FlowerShop.DonHang
             {
                 MessageBox.Show("Vui lòng chọn 1 đơn hàng để cập nhật", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if(txtSoluong.Text == string.Empty)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }    
             else
             {
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật đơn hàng này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -133,7 +137,7 @@ namespace FlowerShop.DonHang
                     order_detail od_dt = fs.order_details.Where(t => t.order_id == maDon).FirstOrDefault();
                     od_dt.quantity = int.Parse(txtSoluong.Text);
                     fs.SubmitChanges();
-                    load_Cthd();
+                    LoadOrderDetails();
                     MessageBox.Show("Cập nhật thành công");
                     xoa_Dulieu();
                 }
@@ -237,7 +241,7 @@ namespace FlowerShop.DonHang
         private void button1_Click(object sender, EventArgs e)
         {
             BackButtonClicked?.Invoke(this, EventArgs.Empty);
+           
         }
-
     }
 }

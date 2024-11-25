@@ -139,8 +139,9 @@ namespace FlowerShop.KhuyenMai
                     try
                     {
                         promotion_flower pf = new promotion_flower();
-                        pf.promotion_id = cboMakhuyenmai.SelectedItem.ToString();
-                        pf.flower_id = cboMahoa.SelectedItem.ToString();
+                        string promotionId = cboMakhuyenmai.SelectedValue.ToString();
+                        pf.promotion_id = promotionId;
+                        pf.flower_id = cboMahoa.SelectedValue.ToString();
                         pf.discount_type = txtLoaigiamgia.Text;
                         if (decimal.TryParse(txtGiatrigiam.Text, out decimal discountValue))
                             pf.discount_value = discountValue;
@@ -172,7 +173,7 @@ namespace FlowerShop.KhuyenMai
             }
             else
             {
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá khách hàng này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá khuyến mãi cho loại hoa này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     try
@@ -193,41 +194,6 @@ namespace FlowerShop.KhuyenMai
                 else
                 {
                     MessageBox.Show("Xoá thất bại");
-                }
-            }
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            if (cboMakhuyenmai.SelectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn 1 loại hoa đang khuyến mãi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật khách hàng này không?", "Xác Nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        string maKm = cboMakhuyenmai.SelectedValue.ToString();
-                        promotion_flower pf = fs.promotion_flowers.Where(t => t.promotion_id == maKm).FirstOrDefault();
-                        pf.flower_id = cboMahoa.SelectedItem.ToString();
-                        pf.discount_type = txtLoaigiamgia.Text;
-                        pf.discount_value = decimal.Parse(txtGiatrigiam.Text);
-                        fs.SubmitChanges();
-                        loadHoaKhuyenMai();
-                        MessageBox.Show("Cập nhật thành công");
-                        xoa_Dulieu();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật thất bại");
                 }
             }
         }

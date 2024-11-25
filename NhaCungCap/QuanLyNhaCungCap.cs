@@ -60,7 +60,11 @@ namespace FlowerShop.NhaCungCap
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtTenncc.Text == string.Empty || txtNguoidaidien.Text == string.Empty || txtDiachi.Text == string.Empty)
+            if(txtMaNcc.Text != string.Empty)
+            {
+                MessageBox.Show("Vui lòng nhấn nút hủy bỏ phía dưới sau đó tạo lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }    
+            else if (txtTenncc.Text == string.Empty || txtNguoidaidien.Text == string.Empty || txtDiachi.Text == string.Empty)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

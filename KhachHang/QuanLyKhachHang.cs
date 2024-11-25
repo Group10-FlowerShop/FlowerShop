@@ -144,22 +144,24 @@ namespace FlowerShop.KhachHang
         {
             // Truy vấn nhân viên và các tài khoản của họ
             var employees = _context.customers
-                                    .Join(_context.accounts,  // Kết hợp với bảng Accounts
-                                          emp => emp.account_id,  // Khóa ngoại trong bảng Employee
-                                          acc => acc.account_id,  // Khóa chính trong bảng Accounts
-                                          (emp, acc) => new  // Lựa chọn các trường cần thiết
-                                          {
-                                              emp.customer_id,
-                                              emp.name,
-                                              emp.email,
-                                              emp.phone,
-                                              emp.address,
-                                              acc.account_id
-                                          })
-                                    .ToList();
+                        .GroupJoin(_context.accounts,
+                                   emp => emp.account_id,
+                                   acc => acc.account_id,
+                                   (emp, accGroup) => new
+                                   {
+                                       emp.customer_id,
+                                       emp.name,
+                                       emp.email,
+                                       emp.phone,
+                                       emp.address,
+                                       account_id = accGroup.Select(a => a.account_id).FirstOrDefault()
+                                   })
+                        .ToList();
+
 
             // Gán kết quả vào DataGridView
             dgvKhachHang.DataSource = employees;
+            
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -170,8 +172,11 @@ namespace FlowerShop.KhachHang
                 DataGridViewRow row = dgvKhachHang.SelectedRows[0];
 
                 // Lấy EmployeeId và AccountId từ các cột của dòng được chọn
-                string customerId = row.Cells["customer_id"].Value.ToString();
-                string accountId = row.Cells["account_id"].Value.ToString();
+                int index = dgvKhachHang.CurrentRow.Index;
+
+                // Lấy EmployeeId và AccountId từ các cột của dòng được chọn
+                string customerId = dgvKhachHang.Rows[index].Cells[0].Value.ToString();
+                string accountId = dgvKhachHang.Rows[index].Cells[5].Value.ToString();
 
                 // Lấy thông tin từ các TextBox
                 string name = txtName.Text;
@@ -228,12 +233,13 @@ namespace FlowerShop.KhachHang
             {
                 // Lấy thông tin từ dòng được chọn
                 DataGridViewRow row = dgvKhachHang.SelectedRows[0];
+                int index = dgvKhachHang.CurrentRow.Index;
 
                 // Điền thông tin vào các TextBox
-                txtName.Text = row.Cells["Name"].Value.ToString();
-                txtEmail.Text = row.Cells["Email"].Value.ToString();
-                txtPhone.Text = row.Cells["Phone"].Value.ToString();
-                txtAddress.Text = row.Cells["Address"].Value.ToString();
+                txtName.Text = dgvKhachHang.Rows[index].Cells[1].Value.ToString();
+                txtEmail.Text = dgvKhachHang.Rows[index].Cells[2].Value.ToString();
+                txtPhone.Text = dgvKhachHang.Rows[index].Cells[3].Value.ToString();
+                txtAddress.Text = dgvKhachHang.Rows[index].Cells[4].Value.ToString();
             }
             TrimEndWhitespace();
         }
@@ -250,10 +256,11 @@ namespace FlowerShop.KhachHang
             {
                 // Lấy thông tin từ dòng được chọn
                 DataGridViewRow row = dgvKhachHang.SelectedRows[0];
+                int index = dgvKhachHang.CurrentRow.Index;
 
                 // Lấy EmployeeId và AccountId từ các cột của dòng được chọn
-                string customerId = row.Cells["customer_id"].Value.ToString();
-                string accountId = row.Cells["account_id"].Value.ToString();
+                string customerId = dgvKhachHang.Rows[index].Cells[0].Value.ToString();
+                string accountId = dgvKhachHang.Rows[index].Cells[5].Value.ToString();
 
                 // Xác nhận người dùng có chắc chắn muốn xóa nhân viên
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này và làm tài khoản của họ không hoạt động?",
