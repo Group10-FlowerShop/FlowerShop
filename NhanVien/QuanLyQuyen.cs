@@ -17,6 +17,10 @@ namespace FlowerShop.NhanVien
         {
             InitializeComponent();
             _context = new db_flowerDataContext();
+            
+        }
+        public void QuanLyQuyen_Load(object sender, EventArgs e)
+        {
             LoadPermissions();
             AutoResizeDataGridView(dgvPermissions);
         }
@@ -93,6 +97,16 @@ namespace FlowerShop.NhanVien
 
             try
             {
+                // Kiểm tra xem quyền này có đang được gán cho nhân viên nào không
+                var roleAssignments = _context.emp_roles.Where(er => er.perm_id == permId).ToList();
+
+                if (roleAssignments.Any())
+                {
+                    MessageBox.Show("Không thể xóa quyền này vì có nhân viên đang sử dụng quyền này.");
+                    return;
+                }
+
+                // Nếu không có nhân viên nào sử dụng quyền, thì có thể xóa quyền
                 var permission = _context.emp_permissions.SingleOrDefault(p => p.perm_id == permId);
                 if (permission != null)
                 {
@@ -100,7 +114,7 @@ namespace FlowerShop.NhanVien
                     _context.SubmitChanges();
 
                     MessageBox.Show("Xóa quyền thành công.");
-                    LoadPermissions();
+                    LoadPermissions(); // Tải lại danh sách quyền
                 }
                 else
                 {
@@ -112,6 +126,7 @@ namespace FlowerShop.NhanVien
                 MessageBox.Show("Lỗi khi xóa quyền: " + ex.Message);
             }
         }
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -186,5 +201,7 @@ namespace FlowerShop.NhanVien
             }
             return "PERM001";
         }
+
+        
     }
 }

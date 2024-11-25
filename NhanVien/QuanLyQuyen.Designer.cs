@@ -147,6 +147,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "QuanLyQuyen";
             this.Size = new System.Drawing.Size(1076, 662);
+            this.Load += new System.EventHandler(this.QuanLyQuyen_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermissions)).EndInit();

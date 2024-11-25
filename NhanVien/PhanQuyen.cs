@@ -16,12 +16,20 @@ namespace FlowerShop.NhanVien
         {
             InitializeComponent();
         }
+        public void frmPhanQuyen_Load(object sender, EventArgs e)
+        {
+            LoadData();
+            LoadEmpRolesData();
+            AutoResizeDataGridView(dgvDanhSach);
+        }
         private void LoadData()
         {
             using (var context = new db_flowerDataContext())
             {
-                // Lấy danh sách nhân viên từ cơ sở dữ liệu
+                // Lấy danh sách nhân viên có tài khoản từ cơ sở dữ liệu
                 var employees = (from e in context.employees
+                                 join acc in context.accounts on e.account_id equals acc.account_id // Kết hợp với bảng accounts
+                                 where e.account_id != null // Kiểm tra account_id không phải null hoặc rỗng
                                  select new
                                  {
                                      EmployeeId = e.employee_id,
@@ -50,7 +58,6 @@ namespace FlowerShop.NhanVien
                 cboQuyen.ValueMember = "PermId";     // Giá trị là PermId
             }
         }
-
         // Phương thức load dữ liệu vào DataGridView
         private void LoadEmpRolesData()
         {
@@ -62,6 +69,8 @@ namespace FlowerShop.NhanVien
                     var empRoles = from er in context.emp_roles
                                    join e in context.employees on er.employee_id equals e.employee_id
                                    join p in context.emp_permissions on er.perm_id equals p.perm_id
+                                   join acc in context.accounts on e.account_id equals acc.account_id // Join với bảng accounts
+                                   where e.account_id != null// Kiểm tra account_id không null hoặc không rỗng
                                    select new
                                    {
                                        EmployeeId = er.employee_id,
@@ -78,6 +87,7 @@ namespace FlowerShop.NhanVien
                     dgvDanhSach.Columns["PermId"].HeaderText = "Mã Quyền";
                     dgvDanhSach.Columns["EmployeeName"].HeaderText = "Tên Nhân Viên";
                     dgvDanhSach.Columns["PermName"].HeaderText = "Tên Quyền";
+
                     // Ẩn các cột EmployeeId và PermId
                     dgvDanhSach.Columns["EmployeeId"].Visible = false;
                     dgvDanhSach.Columns["PermId"].Visible = false;
@@ -85,15 +95,10 @@ namespace FlowerShop.NhanVien
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void frmPhanQuyen_Load(object sender, EventArgs e)
-        {
-            LoadData();
-            LoadEmpRolesData();
-            AutoResizeDataGridView(dgvDanhSach);
-        }
+
         public void AutoResizeDataGridView(DataGridView dgv)
         {
             // Set the AutoSizeColumnsMode to Fill to have columns adjust to fill the entire width
@@ -264,5 +269,6 @@ namespace FlowerShop.NhanVien
                 MessageBox.Show("Error loading data for selected employee: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

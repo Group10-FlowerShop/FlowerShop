@@ -43,12 +43,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGanTaiKhoan = new System.Windows.Forms.Button();
+            this.btnGoTaiKhoan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGoTaiKhoan);
+            this.groupBox1.Controls.Add(this.btnGanTaiKhoan);
             this.groupBox1.Controls.Add(this.btnSua);
             this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.btnThem);
@@ -197,6 +201,26 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
+            // btnGanTaiKhoan
+            // 
+            this.btnGanTaiKhoan.Location = new System.Drawing.Point(10, 307);
+            this.btnGanTaiKhoan.Name = "btnGanTaiKhoan";
+            this.btnGanTaiKhoan.Size = new System.Drawing.Size(142, 36);
+            this.btnGanTaiKhoan.TabIndex = 14;
+            this.btnGanTaiKhoan.Text = "Gắn Tài Khoản";
+            this.btnGanTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnGanTaiKhoan.Click += new System.EventHandler(this.btnGanTaiKhoan_Click);
+            // 
+            // btnGoTaiKhoan
+            // 
+            this.btnGoTaiKhoan.Location = new System.Drawing.Point(158, 307);
+            this.btnGoTaiKhoan.Name = "btnGoTaiKhoan";
+            this.btnGoTaiKhoan.Size = new System.Drawing.Size(142, 36);
+            this.btnGoTaiKhoan.TabIndex = 15;
+            this.btnGoTaiKhoan.Text = "Gỡ Tài Khoản";
+            this.btnGoTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnGoTaiKhoan.Click += new System.EventHandler(this.btnGoTaiKhoan_Click);
+            // 
             // QuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +253,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGanTaiKhoan;
+        private System.Windows.Forms.Button btnGoTaiKhoan;
     }
 }

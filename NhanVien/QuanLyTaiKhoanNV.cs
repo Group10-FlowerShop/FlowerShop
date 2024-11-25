@@ -23,10 +23,12 @@ namespace FlowerShop.NhanVien
             LoadAccounts();
         }
 
-        private void frmQuanLyTaiKhoan_Load(object sender, EventArgs e)
+        public void frmQuanLyTaiKhoan_Load(object sender, EventArgs e)
         {
             dtpkNgayTao.Value = DateTime.Now;
             AutoResizeDataGridView(dgvTaiKhoan);
+            LoadComboBoxLoaiTaiKhoan();
+            LoadAccounts();
         }
 
         public void AutoResizeDataGridView(DataGridView dgv)
@@ -54,6 +56,7 @@ namespace FlowerShop.NhanVien
 
         private void LoadComboBoxLoaiTaiKhoan()
         {
+            cboLoaiTaiKhoan.Items.Clear();
             cboLoaiTaiKhoan.Items.Add("Tất Cả");
             cboLoaiTaiKhoan.Items.Add("Khách Hàng");
             cboLoaiTaiKhoan.Items.Add("Nhân Viên");
