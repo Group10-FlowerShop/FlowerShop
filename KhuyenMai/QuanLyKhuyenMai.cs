@@ -144,7 +144,7 @@ namespace FlowerShop.KhuyenMai
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtMagiamgia.Text == string.Empty || txtTengiamgia.Text == string.Empty || cboLoaigiamgia.SelectedIndex == -1 || txtGiatrigiam.Text == string.Empty)
+            if (txtTengiamgia.Text == string.Empty || cboLoaigiamgia.SelectedIndex == -1 || txtGiatrigiam.Text == string.Empty)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

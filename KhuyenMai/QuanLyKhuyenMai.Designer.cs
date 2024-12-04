@@ -117,10 +117,10 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(865, 580);
+            this.btnHuy.Location = new System.Drawing.Point(830, 580);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(61, 28);
+            this.btnHuy.Size = new System.Drawing.Size(94, 38);
             this.btnHuy.TabIndex = 116;
             this.btnHuy.Text = "Huỷ bỏ";
             this.btnHuy.UseVisualStyleBackColor = true;
@@ -128,10 +128,10 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(618, 580);
+            this.btnXoa.Location = new System.Drawing.Point(606, 580);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(61, 28);
+            this.btnXoa.Size = new System.Drawing.Size(76, 38);
             this.btnXoa.TabIndex = 115;
             this.btnXoa.Text = "Xoá";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -139,10 +139,10 @@
             // 
             // btnTaoma
             // 
-            this.btnTaoma.Location = new System.Drawing.Point(978, 580);
+            this.btnTaoma.Location = new System.Drawing.Point(944, 580);
             this.btnTaoma.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaoma.Name = "btnTaoma";
-            this.btnTaoma.Size = new System.Drawing.Size(61, 28);
+            this.btnTaoma.Size = new System.Drawing.Size(94, 38);
             this.btnTaoma.TabIndex = 114;
             this.btnTaoma.Text = "Tạo mã";
             this.btnTaoma.UseVisualStyleBackColor = true;
@@ -150,10 +150,10 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(743, 580);
+            this.btnSua.Location = new System.Drawing.Point(702, 580);
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(61, 28);
+            this.btnSua.Size = new System.Drawing.Size(108, 38);
             this.btnSua.TabIndex = 113;
             this.btnSua.Text = "Cập nhật";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -161,10 +161,10 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(504, 580);
+            this.btnThem.Location = new System.Drawing.Point(499, 580);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(61, 28);
+            this.btnThem.Size = new System.Drawing.Size(87, 38);
             this.btnThem.TabIndex = 112;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;

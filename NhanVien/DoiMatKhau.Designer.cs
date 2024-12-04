@@ -87,7 +87,7 @@
             this.txtReMatKhau.Location = new System.Drawing.Point(490, 318);
             this.txtReMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.txtReMatKhau.Name = "txtReMatKhau";
-            this.txtReMatKhau.PasswordChar = '\"';
+            this.txtReMatKhau.PasswordChar = '*';
             this.txtReMatKhau.Size = new System.Drawing.Size(222, 27);
             this.txtReMatKhau.TabIndex = 5;
             // 
@@ -106,7 +106,7 @@
             this.txtMatKhau.Location = new System.Drawing.Point(490, 259);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.PasswordChar = '\"';
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(222, 27);
             this.txtMatKhau.TabIndex = 3;
             // 
